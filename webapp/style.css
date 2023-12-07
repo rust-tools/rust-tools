@@ -1,0 +1,63 @@
+body {
+    background-image: url("/webapp/res/graphic/980708.png");
+    background-color: grey;
+    background-repeat: no-repeat;
+    background-position: absolute;
+    background-size: cover;
+}
+
+@font-face {
+    font-family: baseFont;
+    src: url("/webapp/res/fonts/Bebas_Neue/BebasNeue-Regular.ttf")
+}
+
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: fit-content;
+    font-family: baseFont;
+}
+
+.submitBtn {
+    width: 25%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(126, 0, 0);
+    color: white;
+    font-size: 30px;
+    margin: 2%;
+    font-family: baseFont;
+    padding-top: 1%;
+}
+
+#inputbox {
+    width: 80%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 3%;
+}
+
+#output {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: fit-content;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+#breakLine {
+    margin-top: 5%;
+    width: 100%;
+}
