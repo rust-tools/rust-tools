@@ -22,16 +22,21 @@ def findDurability(filePath, searchType=None):
     global itemsFile
     if searchType==None:
       searchType=='items'
-    id = findID(itemsFile)
+    id = 'Wooden Window'
+    #findID(itemsFile)
     with open(filePath, 'r', encoding='utf-8') as f:
         data = json.load(f)
     for info in data.values():
         for item, dictionary in info.items():
             if item == id:
-                return 'Item Found'
+                for i in dictionary:
+                    for key,value in i.items():
+                        print(key, value)
+                    
     
 
 itemsFile = r'items.json'
 durabFile = r'rustlabsDurabilityData.json'
 
 print(findDurability(durabFile))
+# print(findID(itemsFile))
