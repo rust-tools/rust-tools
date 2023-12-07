@@ -1,8 +1,8 @@
 import json
 import pprint as pprint
 
-def findID(filePath, search_by_id=False):
-    search_term = input("Enter item name or id: ").lower()
+def findID(filePath, search_term, search_by_id=False):
+    # search_term = input("Enter item name or id: ").lower()
     with open(filePath, 'r', encoding='utf-8') as f:
         data = json.load(f)
         
@@ -31,7 +31,9 @@ def findDurability(filePath, searchType=None):
             if item == id:
                 for i in dictionary:
                     for key,value in i.items():
-                        print(key, value)
+                        if key == "toolId":
+                            print(f"{findID(itemsFile, value, True)}")
+                        # print(f"{key} : {value}")
                     
     
 
