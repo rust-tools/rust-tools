@@ -57,6 +57,8 @@ def findDurability(filePath):
     # Open the file and load the data into a dictionary
     with open(filePath, 'r', encoding='utf-8') as f:
         data = json.load(f)
+    
+    dict = {}
     # Lot of for loops, thx rustlabs
     # Currently prints all the items that can do damage to 
     # the item with the id that was found
@@ -67,7 +69,10 @@ def findDurability(filePath):
                 for i in dictionary:
                     for key,value in i.items():
                         if key == "toolId":
-                            print(f"{findID(itemsFile, value, True)}")   
+                            raidTool = findID(itemsFile, value, True)
+                         if key == "quantity":
+                            
+
 # File Locations
 itemsFile = r'items.json'
 durabFile = r'rustlabsDurabilityData.json'
