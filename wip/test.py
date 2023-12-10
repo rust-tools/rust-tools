@@ -68,10 +68,22 @@ def findDurability(filePath):
             if item == id:
                 for i in dictionary:
                     for key,value in i.items():
+                        if key == "group":
+                            group = value
                         if key == "toolId":
                             raidTool = findID(itemsFile, value, True)
-                         if key == "quantity":
-                            
+                        elif key == "quantity":
+                            quantity = value
+                        elif key == "timetostring":
+                            stringtime = value
+                        elif key == "fuel":
+                            lowgradecost = value
+                        elif key == "sulfur":
+                            sulfurcost = value
+                        t = (group, quantity, stringtime, lowgradecost, sulfurcost)
+                        dict[raidTool] = t          
+    return dict
+
 
 # File Locations
 itemsFile = r'items.json'
