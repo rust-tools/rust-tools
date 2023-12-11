@@ -53,12 +53,16 @@ def findDurability(filePath):
     """
     global itemsFile
     id = findID(itemsFile)
+    itemname = findID(itemsFile, id, True)
+    cheapest = float('inf')
 
     # Open the file and load the data into a dictionary
     with open(filePath, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
-    dict = {}
+    dict_ = {}
+    list_ = []
+    dellist = []
     # Lot of for loops, thx rustlabs
     # Currently prints all the items that can do damage to 
     # the item with the id that was found
@@ -69,20 +73,36 @@ def findDurability(filePath):
                 for i in dictionary:
                     for key,value in i.items():
                         if key == "group":
-                            group = value
+                            list_.append(value)
                         if key == "toolId":
                             raidTool = findID(itemsFile, value, True)
                         elif key == "quantity":
-                            quantity = value
+                            list_.append(value)
                         elif key == "timetostring":
-                            stringtime = value
+                            list_.append(value)
                         elif key == "fuel":
-                            lowgradecost = value
+                            list_.append(value)
                         elif key == "sulfur":
-                            sulfurcost = value
-                        t = (group, quantity, stringtime, lowgradecost, sulfurcost)
-                        dict[raidTool] = t          
-    return dict
+                            list_.append(value)
+                    dict_[raidTool] = list_
+                    list_ = []
+    
+    for key, value in dict_.items():
+        if value[0] != "explosive":
+            dellist.append(key)
+
+    for i in dellist:
+        del dict_[i]
+
+    for key, value in dict_.items():
+        if value[3] != None:
+            if value[3] < cheapest:
+                cheapest = value[3] 
+        else: continue
+
+    for key, value in dict_.items():
+        if value[3] == cheapest:
+            return f"Trying to raid: {itemname}\nBest option to raid: {key}\nCost: {value[3]} sulfur\nTime to raid: {value[2]}\nQuantity needed: {value[1]}"
 
 
 # File Locations
