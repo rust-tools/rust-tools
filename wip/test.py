@@ -206,11 +206,81 @@ def findVehicleDurability(durabFile: str):
         if value[3] == cheapest:
             return f"Trying to raid: {input_}\nBest option to raid: {key}\nCost: {value[3]} sulfur\nQuantity needed: {value[1]}"
 
+def findDurability(durabFile: str, raidType: str, durabType: str, input_: str):
+    raidTypeList = ['eco', 'explo']
+    durabTypeList = ['deployable', 'vehicle', 'building']
+    global itemsFile
+    cheapest = float('inf')
 
+    with open(durabFile, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    if raidType not in raidTypeList:
+        return "Invalid Raid Type"
+    if durabType not in durabTypeList:
+        return "Invalid Raid Item Type"
+    
+    search_term = input_
+
+    if durabType == 'deployable':
+        search_term = findID(itemsFile, input_)
+    
+    
+    dict_ = {}
+    list_ = []
+    dellist = []
+
+    for info in data.values():
+        for item, dictionary in info.items():
+            # Breaks on the next if loop, take a look at this
+            if search_term == item:
+                for i in dictionary:
+                    for key,value in i.items():
+                        if key == "group":
+                            list_.append(value)
+                        if key == "toolId":
+                            raidTool = findID(itemsFile, value, True)
+                        elif key == "quantity":
+                            list_.append(value)
+                        elif key == "timetostring":
+                            list_.append(value)
+                        elif key == "fuel":
+                            list_.append(value)
+                        elif key == "sulfur":
+                            list_.append(value)
+                    print(list_)
+                    dict_[raidTool] = list_
+                    list_ = []
+    if raidType == 'eco':
+        for key,value in dict_.items():
+            if value[0] != 'melee':
+                dellist.append(key)
+    elif raidType == 'explo':
+        for key,value in dict_.items():
+            if value[0] != ('explosive' or 'torpedo'):
+                dellist.append(key)
+
+    for i in dellist:
+        del dict_[i]
+
+    for key, value in dict_.items():
+        if value[3] != None:
+            if value[3] < cheapest:
+                cheapest = value[3] 
+
+    for key, value in dict_.items():
+        if value[3] == cheapest:
+            return f"Trying to raid: {search_term}\nBest option to raid: {key}\nCost: {value[3]} sulfur\nQuantity needed: {value[1]}"
+
+    
+
+    
 
 
 # File Locations
 itemsFile = r'data\items.json'
 durabFile = r'data\rustlabsDurabilityData.json'
 
-print(findVehicleDurability(durabFile))
+# print(findBuildingDurability(durabFile))
+print(findID(itemsFile, 'bed'))
+print(findDurability(durabFile, 'explo', 'deployable', 'Bed'))
