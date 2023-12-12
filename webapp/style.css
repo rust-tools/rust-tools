@@ -22,7 +22,11 @@ body {
     width: 500px;
     height: fit-content;
     font-family: baseFont;
+<<<<<<< HEAD
     color: white;
+=======
+    color: ivory;
+>>>>>>> origin
 }
 
 .submitBtn {
@@ -49,7 +53,7 @@ body {
 }
 
 #output {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.75);
     height: fit-content;
     border-radius: 10px;
     border: none;

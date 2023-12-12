@@ -1,5 +1,4 @@
-import json # Import json library to easy data extraction
-import pprint as pprint # For testing purposes, does not currently have a use case
+import json
 
 def findID(filePath = r'data\items.json', search_term=None, search_by_id=False):
     """
@@ -17,10 +16,6 @@ def findID(filePath = r'data\items.json', search_term=None, search_by_id=False):
     "Not a valid item name or id." (str): If no match is found.
 
     """
-
-    # If no search term is provided, ask for one
-    if search_term == None:
-        search_term = input("Enter item name or id: ").lower()
     
     # Open the file and load the data into a dictionary
     with open(filePath, 'r', encoding='utf-8') as f:
@@ -148,16 +143,7 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
         for key,value in dict_.items():
             if value[2] == cheapest:
                 return f"Trying to {raidType}raid: {itemName}\nBest option to {raidType}raid: {key}\nTime to {raidType}raid: {value[3]}\nQuantity needed: {value[1]}"
-
-    
-
-    
-
-
+            
 # File Locations
 itemsFile = r'data\items.json'
 durabFile = r'data\rustlabsDurabilityData.json'
-
-
-# Testing
-# print(findDurability(durabFile, 'deployable', 'workbench level 3', 'eco'))
