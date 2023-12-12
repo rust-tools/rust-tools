@@ -40,7 +40,13 @@ def findID(filePath, search_term=None, search_by_id=False):
                 return id
     return "Not a valid item name or id."
 
-def findDeployableDurability(filePath):
+
+# TODO: 
+# Commenting
+# Condense the 3 functions into one, by adding 2 parameters
+#   ecoraid or exploraid
+#   building, deployable, vehicle (building/vehicle could be 1 value (does not look up anything in items.json))
+def findDeployableDurability(filePath: str):
     """
     Finds the durability of an item based on the name or shortname of the item.
     
@@ -104,7 +110,6 @@ def findDeployableDurability(filePath):
         if value[3] == cheapest:
             return f"Trying to raid: {itemname}\nBest option to raid: {key}\nCost: {value[3]} sulfur\nQuantity needed: {value[1]}"
 
-
 def findBuildingDurability(durabFile: str):
     global itemsFile
 
@@ -119,7 +124,7 @@ def findBuildingDurability(durabFile: str):
 
     for info in data.values():
         for building, dictionary in info.items():
-            if input_ == building:
+            if building == input_:
                 for i in dictionary:
                     for key, value in i.items():
                         if key == "group":
@@ -167,7 +172,7 @@ def findVehicleDurability(durabFile: str):
 
     for info in data.values():
         for vehicle, dictionary in info.items():
-            if input_ == vehicle:
+            if vehicle == input_:
                 for i in dictionary:
                     for key, value in i.items():
                         if key == "group":
@@ -205,7 +210,7 @@ def findVehicleDurability(durabFile: str):
 
 
 # File Locations
-itemsFile = r'items.json'
-durabFile = r'rustlabsDurabilityData.json'
+itemsFile = r'data\items.json'
+durabFile = r'data\rustlabsDurabilityData.json'
 
 print(findVehicleDurability(durabFile))
