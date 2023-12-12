@@ -16,10 +16,6 @@ def findID(filePath, search_term=None, search_by_id=False):
     "Not a valid item name or id." (str): If no match is found.
 
     """
-
-    # If no search term is provided, ask for one
-    if search_term == None:
-        search_term = input("Enter item name or id: ").lower()
     
     # Open the file and load the data into a dictionary
     with open(filePath, 'r', encoding='utf-8') as f:
