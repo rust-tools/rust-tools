@@ -1,1 +1,16 @@
 import functions as cost
+
+# File Locations
+itemsFile = r'data\items.json'
+durabFile = r'data\rustlabsDurabilityData.json'
+
+input1 = input("What do you want to raid? ")
+input2 = input("What type of item is this? (B,V,D)? ")
+input3 = input("What type of raid do you want to do? (eco/explo) ")
+
+if input2 == 'B':
+    print(cost.findDurability(durabFile, 'building', input1, input3))
+elif input2 == 'V':
+    print(cost.findDurability(durabFile, 'vehicle', input1, input3))
+elif input2 == 'D':
+    print(cost.findDurability(durabFile, 'deployable', input1, input3))
