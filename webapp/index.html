@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/webapp/style.css" rel="stylesheet">
+    <title>RRCC</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main">
+            <h1 align="center" id="header">Raid Cost Calculator</h1>
+            <form align="center" method="POST">
+                <input type="text" name="id" placeholder="Enter item..." id="inputbox" required> 
+                <!-- TODO: assign input to variable -->
+                <br>
+                <button type="submit" id="idSubmit" class="submitBtn" onclick="sendData()">BOOM!</button>
+            </form>
+            <div id="breakLine">
+                <hr>
+            </div>
+            <div id="output">
+                <p id="outputText" align="center">Output</p>
+            </div>
+            <script>
+                function sendData() {
+                    var inputData = document.getElementById("inputbox").value;
+    
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/webapp/script.py", true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            var json = JSON.parse(xhr.responseText);
+                            document.getElementById("outputText").innerHTML = xhr.responseText;
+                        }
+                    };
+                    xhr.send(JSON.stringify({inputData: inputData}));
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>
