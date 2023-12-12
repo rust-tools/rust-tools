@@ -1,7 +1,7 @@
 import json # Import json library to easy data extraction
 import pprint as pprint # For testing purposes, does not currently have a use case
 
-def findID(filePath, search_term=None, search_by_id=False):
+def findID(filePath = r'data\items.json', search_term=None, search_by_id=False):
     """
     Finds the ID of an item based on the name or shortname of the item.
     If search_by_id is set to True, it will search by ID instead of name.
@@ -41,7 +41,7 @@ def findID(filePath, search_term=None, search_by_id=False):
     return "Not a valid item name or id."
 
 
-def findDurability(durabFile: str, itemType: str, itemName: str, raidType: str = 'explo'):
+def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabFile: str = r'data\rustlabsDurabilityData.json'):
     """
 
     Finds the durability of an item based on the name, shortname or ID of the item.
