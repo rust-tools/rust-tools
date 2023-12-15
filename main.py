@@ -13,8 +13,8 @@ input3 = input("What type of raid do you want to do? (eco/explo) ")
 
 # Print the output of the function (pretty self explanatory)
 if input2 == 'B':
-    print(cost.findDurability(durabFile, 'building', input1, input3))
+    print(cost.findDurability('building', input1, input3))
 elif input2 == 'V':
-    print(cost.findDurability(durabFile, 'vehicle', input1, input3))
+    print(cost.findDurability('vehicle', input1, input3))
 elif input2 == 'D':
-    print(cost.findDurability(durabFile, 'deployable', input1, input3))
+    print(cost.findDurability('deployable', input1, input3))

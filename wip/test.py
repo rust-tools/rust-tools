@@ -160,4 +160,4 @@ durabFile = r'data\rustlabsDurabilityData.json'
 
 
 # Testing
-# print(findDurability(durabFile, 'deployable', 'workbench level 3', 'eco'))
+# print(findDurability(durabFile, 'deployable', 'workbench  3', 'eco'))
