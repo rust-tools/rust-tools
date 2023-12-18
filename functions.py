@@ -77,9 +77,11 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
     # If the item type is deployable, search by ID
     if itemType == 'deployable':
         search_term = findID(itemsFile, itemName)
+        returnName = findID(itemsFile, search_term, True)
     # If the item type is vehicle or building, search by name
     elif itemType == 'vehicle' or 'building':
         search_term = itemName
+        returnName = findID(itemsFile, search_term, True)
 
     # Lots of for loops thx rustlabs
     # Loop through the dictionary and return the ID if the search term matches
@@ -131,7 +133,7 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
         # Return the cheapest item to raid with
         for key, value in dict_.items():
             if value[-1] == cheapest:
-                return f"Trying to {raidType}raid: {itemName}\nBest option to {raidType}raid: {key}\nCost: {value[-1]} sulfur\nTime to raid: {value[3]}\nQuantity needed: {value[1]}"
+                return f"Trying to {raidType}raid: {returnName}\nBest option to {raidType}raid: {key}\nCost: {value[-1]} sulfur\nTime to raid: {value[3]}\nQuantity needed: {value[1]}"
     
     # If the raid type is eco, find the cheapest (time) item to raid with
     elif raidType == 'eco':
@@ -142,7 +144,7 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
         # Return the cheapest item to raid with
         for key,value in dict_.items():
             if value[2] == cheapest:
-                return f"Trying to {raidType}raid: {itemName}\nBest option to {raidType}raid: {key}\nTime to {raidType}raid: {value[3]}\nQuantity needed: {value[1]}"
+                return f"Trying to {raidType}raid: {returnName}\nBest option to {raidType}raid: {key}\nTime to {raidType}raid: {value[3]}\nQuantity needed: {value[1]}"
             
 # File Locations
 itemsFile = r'data\items.json'
