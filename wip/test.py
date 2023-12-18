@@ -78,7 +78,6 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
         return "Invalid Raid Type"
     if itemType not in itemTypeList:
         return "Invalid Item Type"
-
     # If the item type is deployable, search by ID
     if itemType == 'deployable':
         search_term = findID(itemsFile, itemName)
@@ -160,4 +159,4 @@ durabFile = r'data\rustlabsDurabilityData.json'
 
 
 # Testing
-# print(findDurability(durabFile, 'deployable', 'workbench  3', 'eco'))
+print(findDurability('deployable', 'workbench3', 'eco'))
