@@ -32,11 +32,12 @@ app = Flask(__name__)
 def home():
     if request.method == 'POST':
         input_data = request.form.get('getId')
-        raidType = request.form.get('raidType')
-        itemType = request.form.get('itemType')
+        raidType = str(request.form.get('raidType'))
+        itemType = str(request.form.get('itemType'))
+        print(itemType, input_data, raidType)
         result = pythonFunction.findDurability(itemType, input_data, raidType)
-        return render_template('index.html', getId = input_data, result=result)
-    return render_template('index.html')
+        return render_template('index.html', result=result)
+    return render_template('index.html', result="MethodError")
 
 if __name__ == "__main__":
     app.run(debug=True)
