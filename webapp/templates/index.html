@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <title>RRCC</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main">
+            <h1 align="center" id="header">Raid Cost Calculator</h1>
+            <form align="center" method="POST">
+                <input type="text" name="getId" placeholder="Enter item..." id="inputbox" required>
+                <br>
+                <select name="raidType" id="raidType" class="dropDowns">
+                    <option value="explo">Explosive Raid</option>
+                    <option value="eco">Eco Raid</option>
+                </select>
+                <select name="itemType" id="itemType" class="dropDowns">
+                    <option value="deployable">Deployable</option>
+                    <option value="building">Structure</option>
+                    <option value="vehicle">Vehicle</option>
+                </select>
+                <br>
+                <button type="submit" id="idSubmit" class="submitBtn" value="Submit">BOOM!</button>
+            </form>
+            <div id="breakLine">
+                <hr>
+            </div>
+            <div id="output">
+                {% autoescape false %}
+                {% if result %}
+                <p>{{ result }}</p>
+                {% else %}
+                <p>Error</p>
+                {% endif %}
+                {% endautoescape %}
+            </div>
+            <!-- <script>
+                function sendData() {
+                    var inputData = document.getElementById("inputbox").value;
+    
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/webapp/script.py", true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            var json = JSON.parse(xhr.responseText);
+                            document.getElementById("outputText").innerHTML = xhr.responseText;
+                        }
+                    };
+                    xhr.send(JSON.stringify({inputData: inputData}));
+                }
+            </script> -->
+        </div>
+    </div>
+</body>
+</html>
