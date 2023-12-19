@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Input Form</h2>
+
+<form method="POST">
+  <input type="text" id="getId" name="getId">
+  <input type="submit" value="Submit">
+</form>
+
+{% if result %}
+<p>Output for {{ getId }}: {{ result }}</p>
+{% endif %}
+
+</body>
+</html>
