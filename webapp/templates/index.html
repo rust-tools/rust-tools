@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/webapp/style.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
     <title>RRCC</title>
 </head>
 <body>
@@ -11,18 +11,33 @@
         <div class="main">
             <h1 align="center" id="header">Raid Cost Calculator</h1>
             <form align="center" method="POST">
-                <input type="text" name="id" placeholder="Enter item..." id="inputbox" required> 
-                <!-- TODO: assign input to variable -->
+                <input type="text" name="getId" placeholder="Enter item..." id="inputbox" required>
                 <br>
-                <button type="submit" id="idSubmit" class="submitBtn" onclick="sendData()">BOOM!</button>
+                <select name="raidType" id="raidType" class="dropDowns">
+                    <option value="explo">Explosive Raid</option>
+                    <option value="eco">Eco Raid</option>
+                </select>
+                <select name="itemType" id="itemType" class="dropDowns">
+                    <option value="deployable">Deployable</option>
+                    <option value="building">Structure</option>
+                    <option value="vehicle">Vehicle</option>
+                </select>
+                <br>
+                <button type="submit" id="idSubmit" class="submitBtn" value="Submit">BOOM!</button>
             </form>
             <div id="breakLine">
                 <hr>
             </div>
             <div id="output">
-                <p id="outputText" align="center">Output</p>
+                {% autoescape false %}
+                {% if result %}
+                <p>{{ result }}</p>
+                {% else %}
+                <p>Error</p>
+                {% endif %}
+                {% endautoescape %}
             </div>
-            <script>
+            <!-- <script>
                 function sendData() {
                     var inputData = document.getElementById("inputbox").value;
     
@@ -37,7 +52,7 @@
                     };
                     xhr.send(JSON.stringify({inputData: inputData}));
                 }
-            </script>
+            </script> -->
         </div>
     </div>
 </body>
