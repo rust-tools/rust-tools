@@ -24,7 +24,7 @@
 #     app.run(debug=True)
 
 from flask import Flask, render_template, request
-import pythonFunction
+import pythonFunctions
 
 app = Flask(__name__)
 
@@ -34,9 +34,10 @@ def home():
         input_data = request.form.get('getId')
         raidType = request.form.get('raidType')
         itemType = request.form.get('itemType')
-        result = pythonFunction.findDurability(itemType, input_data, raidType)
-        return render_template('index.html', getId = input_data, result=result)
-    return render_template('index.html')
+        print(itemType, input_data, raidType)
+        result = pythonFunctions.findDurability(itemType, input_data, raidType)
+        return render_template('index.html', result=result)
+    return render_template('index.html', result="waiting for input")
 
 if __name__ == "__main__":
     app.run(debug=True)

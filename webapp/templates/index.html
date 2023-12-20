@@ -11,18 +11,48 @@
         <div class="main">
             <h1 align="center" id="header">Raid Cost Calculator</h1>
             <form align="center" method="POST">
-                <input type="text" name="getId" placeholder="Enter item..." id="inputbox" required>
-                <br>
                 <select name="raidType" id="raidType" class="dropDowns">
                     <option value="explo">Explosive Raid</option>
                     <option value="eco">Eco Raid</option>
                 </select>
                 <select name="itemType" id="itemType" class="dropDowns">
                     <option value="deployable">Deployable</option>
-                    <option value="building">Structure</option>
                     <option value="vehicle">Vehicle</option>
+                    <option value="building">Building</option>
                 </select>
-                <br>
+                <input type="text" name="getId" placeholder="Enter item..." id="inputbox" list="autoSuggest" required>
+                <datalist id="autoSuggest" maxlength="3">
+                    {% for item in items %}
+                    <option value="{{ item }}">
+                    {% endfor %}
+                </datalist>
+                <script>
+                    document.getElementById('inputbox').addEventListener('keyup', function() {
+                        var input = this.value;
+                        var datalist = document.getElementById('autoSuggest');
+                
+                        // Clear previous options
+                        datalist.innerHTML = '';
+                
+                        // Fetch new suggestions based on input
+                        fetch("{{ url_for('static', filename='suggests.json') }}")
+                            .then(response => response.json())
+                            .then(suggestions => {
+                                // Filter suggestions
+                                var filteredSuggestions = suggestions.filter(function(suggestion) {
+                                    return suggestion.toLowerCase().includes(input.toLowerCase());
+                                });
+                
+                                // Create new options and add them to the datalist
+                                filteredSuggestions.forEach(function(suggestion) {
+                                    var option = document.createElement('option');
+                                    option.value = suggestion;
+                                    datalist.appendChild(option);
+                                });
+                            })
+                            .catch(error => console.error('Error:', error));
+                    });
+                </script>
                 <button type="submit" id="idSubmit" class="submitBtn" value="Submit">BOOM!</button>
             </form>
             <div id="breakLine">
