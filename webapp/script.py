@@ -24,7 +24,7 @@
 #     app.run(debug=True)
 
 from flask import Flask, render_template, request
-import pythonFunction
+import pythonFunctions
 
 app = Flask(__name__)
 
@@ -35,7 +35,7 @@ def home():
         raidType = str(request.form.get('raidType'))
         itemType = str(request.form.get('itemType'))
         print(itemType, input_data, raidType)
-        result = pythonFunction.findDurability(itemType, input_data, raidType)
+        result = pythonFunctions.findDurability(itemType, input_data, raidType)
         return render_template('index.html', result=result)
     return render_template('index.html', result="MethodError")
 
