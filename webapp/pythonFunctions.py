@@ -26,12 +26,13 @@ def findID(filePath = r'data/items.json', search_term=None, search_by_id=False):
     # If search_by_id is True, it will search by ID instead of name
     # If no match is found, it will return "Not a valid item name or id."   
     for id, info in data.items():
+        search_term = search_term.lower()
         if search_by_id:
             if id.lower() == search_term:
                 return info['name']
         elif info['name'].lower() == search_term:
             return id
-        elif info['shortname'] == search_term:
+        elif info['shortname'].lower() == search_term:
                 return id
     return "Not a valid item name or id."
 
@@ -79,8 +80,8 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
         search_term = findID(itemsFile, itemName)
         returnName = findID(itemsFile, search_term, True)
     # If the item type is vehicle or building, search by name
-    elif itemType == 'vehicle' or 'building':
-        search_term = itemName
+    elif itemType == 'vehicle' or itemType == 'building':
+        search_term = itemName.lower()
         returnName = findID(itemsFile, search_term, True)
 
     # Lots of for loops thx rustlabs
@@ -88,7 +89,7 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
     # the name or shortname of the item
     for info in data.values():
         for item, dictionary in info.items():
-            if search_term == item:
+            if search_term.lower() == item.lower():
                 for i in dictionary:
                     for key,value in i.items():
                         if key == "group":
