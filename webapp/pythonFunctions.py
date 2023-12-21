@@ -82,7 +82,7 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
     # If the item type is vehicle or building, search by name
     elif itemType == 'vehicle' or itemType == 'building':
         search_term = itemName.lower()
-        returnName = findID(itemsFile, search_term, True)
+        returnName = itemName
 
     # Lots of for loops thx rustlabs
     # Loop through the dictionary and return the ID if the search term matches
