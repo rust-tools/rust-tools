@@ -40,6 +40,17 @@ body {
     margin-left: 2%;
 }
 
+.submitBtn:hover {
+    background-image: url("img/boom.png");
+    background-position: center;
+    background-size: cover;
+    background-color: rgb(183, 0, 0);
+    cursor: pointer;
+    border: 2px solid darkred;
+    background-size: 160%;
+    color: darkred;
+}
+
 .dropDowns {
     width: 40%;
     height: 50px;

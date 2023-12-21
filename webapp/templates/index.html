@@ -34,6 +34,12 @@
                             var raidType = localStorage.getItem('raidType');
                             var itemType = localStorage.getItem('itemType');
 
+                            if (document.getElementById('raidType').value === 'explo') {
+                                document.getElementById('idSubmit').innerHTML = 'BOOM!';
+                            } else if (document.getElementById('raidType').value === 'eco') {
+                                document.getElementById('idSubmit').innerHTML = 'CHOP!';
+                            }
+
                             // If there are, set the selected options
                             if (raidType) {
                                 document.getElementById('raidType').value = raidType;
@@ -49,12 +55,29 @@
                             document.getElementById('itemType').onchange = function() {
                                 localStorage.setItem('itemType', this.value);
                             }
+
+                            document.getElementById('raidType').onchange = function() {
+                                var submitButton = document.getElementById('idSubmit');
+                                var raidType = this.value;
+
+                                if (raidType === 'explo') {
+                                    submitButton.innerHTML = 'BOOM!';
+                                } else if (raidType === 'eco') {
+                                    submitButton.innerHTML = 'CHOP!';
+                                }
+                            
+                            }
                         }
                 </script>
-                    
 
                 <!-- The big input box, contains the item that gets sent to the calculator -->
-                <input type="text" name="getId" placeholder="Enter item..." id="inputbox" list="autoSuggest" required>
+                <input 
+                    type="text" 
+                    name="getId" 
+                    placeholder="Enter item..." 
+                    id="inputbox" 
+                    list="autoSuggest"
+                    required>
 
                 <datalist id="autoSuggest" maxlength="3">
                     {% for item in items %}
@@ -63,14 +86,25 @@
                 </datalist>
 
                 <script>
-                    // JavaScript code to give auto suggest functionality to the input box, based on user input.
-                    document.getElementById('inputbox').addEventListener('keyup', function() {
-                        var input = this.value;
+                    // JavaScript code to give auto suggest functionality to the input box, based on user input.    
+                    function updateSuggestions() {
+                        var input = document.getElementById('inputbox').value;
                         var datalist = document.getElementById('autoSuggest');
                         datalist.innerHTML = '';
 
+                        // Gets the value of the item type dropdown menu, and sets the path to the JSON file containing the items.
+                        var itemType = document.getElementById('itemType').value;
+                        var suggestPath;
+                        if (itemType === 'deployable') {
+                            suggestPath = "{{ url_for('static', filename='deployableSuggests.json') }}";
+                        } else if (itemType === 'vehicle') {
+                            suggestPath = "{{ url_for('static', filename='vehicleSuggests.json') }}";
+                        } else if (itemType === 'building') {
+                            suggestPath = "{{ url_for('static', filename='buildingSuggests.json') }}";
+                        }
+
                         // Fetches the JSON file containing all the items, and filters the list based on user input.
-                        fetch("{{ url_for('static', filename='suggests.json') }}")
+                        fetch(suggestPath)
                             .then(response => response.json())
                             .then(suggestions => {
                                 var filteredSuggestions = suggestions.filter(function(suggestion) {
@@ -84,11 +118,16 @@
                                 });
                             })
                             .catch(error => console.error('Error:', error));
-                    });
+                    };
+                    // Calls the updateSuggestions function when the user either types in the box or changes the item type.
+                    document.getElementById('inputbox').addEventListener('keyup', updateSuggestions);
+                    document.getElementById('itemType').addEventListener('change', updateSuggestions);
+                    
                 </script>
 
                 <!-- Button that submits the input to the pythonFunctions.py file -->
                 <button type="submit" id="idSubmit" class="submitBtn" value="Submit">BOOM!</button>
+
 
             </form>
 
