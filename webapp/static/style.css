@@ -1,10 +1,14 @@
 /* Honest to god, I am not going to comment a CSS file. This is the most pseudocode it gets, and it's not like I used complicated CSS either. */
-body {
+html {
     background-image: url("img/980708.png");
     background-color: rgb(126, 0, 0);
     background-repeat: no-repeat;
-    background-position: absolute;
+    background-position: fixed;
     background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 100%;
 }
 
 @font-face {
