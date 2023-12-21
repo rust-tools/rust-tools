@@ -54,7 +54,13 @@
                     
 
                 <!-- The big input box, contains the item that gets sent to the calculator -->
-                <input type="text" name="getId" placeholder="Enter item..." id="inputbox" list="autoSuggest" required>
+                <input 
+                    type="text" 
+                    name="getId" 
+                    placeholder="Enter item..." 
+                    id="inputbox" 
+                    list="autoSuggest"
+                    required>
 
                 <datalist id="autoSuggest" maxlength="3">
                     {% for item in items %}
@@ -85,6 +91,7 @@
                             })
                             .catch(error => console.error('Error:', error));
                     });
+                    
                 </script>
 
                 <!-- Button that submits the input to the pythonFunctions.py file -->
