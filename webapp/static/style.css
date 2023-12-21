@@ -40,6 +40,12 @@ body {
     margin-left: 2%;
 }
 
+.submitBtn:hover {
+    background-color: rgb(183, 0, 0);
+    cursor: pointer;
+    border: 2px solid rgb(126, 0, 0);
+}
+
 .dropDowns {
     width: 40%;
     height: 50px;
