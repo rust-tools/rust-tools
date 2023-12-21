@@ -86,19 +86,21 @@
                 </datalist>
 
                 <script>
-                    // JavaScript code to give auto suggest functionality to the input box, based on user input.
-                    document.getElementById('inputbox').addEventListener('keyup', function() {
-                        var input = this.value;
+                    // JavaScript code to give auto suggest functionality to the input box, based on user input.    
+                    function updateSuggestions() {
+                        var input = document.getElementById('inputbox').value;
                         var datalist = document.getElementById('autoSuggest');
                         datalist.innerHTML = '';
 
+                        // Gets the value of the item type dropdown menu, and sets the path to the JSON file containing the items.
                         var itemType = document.getElementById('itemType').value;
+                        var suggestPath;
                         if (itemType === 'deployable') {
-                            var suggestPath = "{{ url_for('static', filename='deployableSuggests.json') }}";
+                            suggestPath = "{{ url_for('static', filename='deployableSuggests.json') }}";
                         } else if (itemType === 'vehicle') {
-                            var suggestPath = "{{ url_for('static', filename='vehicleSuggests.json') }}";
+                            suggestPath = "{{ url_for('static', filename='vehicleSuggests.json') }}";
                         } else if (itemType === 'building') {
-                            var suggestPath = "{{ url_for('static', filename='buildingSuggests.json') }}";
+                            suggestPath = "{{ url_for('static', filename='buildingSuggests.json') }}";
                         }
 
                         // Fetches the JSON file containing all the items, and filters the list based on user input.
@@ -116,7 +118,10 @@
                                 });
                             })
                             .catch(error => console.error('Error:', error));
-                    });
+                    };
+                    // Calls the updateSuggestions function when the user either types in the box or changes the item type.
+                    document.getElementById('inputbox').addEventListener('keyup', updateSuggestions);
+                    document.getElementById('itemType').addEventListener('change', updateSuggestions);
                     
                 </script>
 
