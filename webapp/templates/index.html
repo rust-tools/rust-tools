@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Commenting an HTML file feels weird, is it conventionally done? -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,27 +12,64 @@
         <div class="main">
             <h1 align="center" id="header">Raid Cost Calculator</h1>
             <form align="center" method="POST">
+                <!-- Input elements: dropdown menus, input box, and submit button. -->
+
                 <select name="raidType" id="raidType" class="dropDowns">
+                    <!-- Raidtype dropdown menu -->
                     <option value="explo">Explosive Raid</option>
                     <option value="eco">Eco Raid</option>
                 </select>
+
                 <select name="itemType" id="itemType" class="dropDowns">
+                    <!-- Itemtype dropdown menu -->
                     <option value="deployable">Deployable</option>
                     <option value="vehicle">Vehicle</option>
                     <option value="building">Building</option>
                 </select>
+
+                <script>
+                    // JavaScript code to save the selected options in the dropdown menus, so that they are still selected when the page is refreshed.
+                    window.onload = function() {
+                            // Check if there are saved selections
+                            var raidType = localStorage.getItem('raidType');
+                            var itemType = localStorage.getItem('itemType');
+
+                            // If there are, set the selected options
+                            if (raidType) {
+                                document.getElementById('raidType').value = raidType;
+                            }
+                            if (itemType) {
+                                document.getElementById('itemType').value = itemType;
+                            }
+
+                            // When an option is selected, save the selection
+                            document.getElementById('raidType').onchange = function() {
+                                localStorage.setItem('raidType', this.value);
+                            }
+                            document.getElementById('itemType').onchange = function() {
+                                localStorage.setItem('itemType', this.value);
+                            }
+                        }
+                </script>
+                    
+
+                <!-- The big input box, contains the item that gets sent to the calculator -->
                 <input type="text" name="getId" placeholder="Enter item..." id="inputbox" list="autoSuggest" required>
+
                 <datalist id="autoSuggest" maxlength="3">
                     {% for item in items %}
                     <option value="{{ item }}">
                     {% endfor %}
                 </datalist>
+
                 <script>
+                    // JavaScript code to give auto suggest functionality to the input box, based on user input.
                     document.getElementById('inputbox').addEventListener('keyup', function() {
                         var input = this.value;
                         var datalist = document.getElementById('autoSuggest');
                         datalist.innerHTML = '';
 
+                        // Fetches the JSON file containing all the items, and filters the list based on user input.
                         fetch("{{ url_for('static', filename='suggests.json') }}")
                             .then(response => response.json())
                             .then(suggestions => {
@@ -48,17 +86,24 @@
                             .catch(error => console.error('Error:', error));
                     });
                 </script>
+
+                <!-- Button that submits the input to the pythonFunctions.py file -->
                 <button type="submit" id="idSubmit" class="submitBtn" value="Submit">BOOM!</button>
+
             </form>
-            <div id="breakLine">
+
+            <div>
+                <!-- The pretty white line between the input and output -->
                 <hr>
             </div>
+
             <div id="output">
-                {% autoescape false %}
+                <!-- I'm not even going to lie, Flask looks weird in HTML. This 'prints' the result into the output box when it is available, and 'prints' error message when nothing is there. -->
+                {% autoescape false %} <!-- The autoescape element prevents the page from displaying the <br> tags, and instead interprets them as line breaks. -->
                 {% if result %}
                 <p>{{ result }}</p>
                 {% else %}
-                <p>Please input an item...</p>
+                <p>Please input a valid item...</p>
                 {% endif %}
                 {% endautoescape %}
             </div>
