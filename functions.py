@@ -1,6 +1,6 @@
 import json
 
-def findID(filePath = r'data\items.json', search_term=None, search_by_id=False):
+def findID(filePath = r'data/items.json', search_term=None, search_by_id=False):
     """
     Finds the ID of an item based on the name or shortname of the item.
     If search_by_id is set to True, it will search by ID instead of name.
@@ -36,7 +36,7 @@ def findID(filePath = r'data\items.json', search_term=None, search_by_id=False):
     return "Not a valid item name or id."
 
 
-def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabFile: str = r'data\rustlabsDurabilityData.json'):
+def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabFile: str = r'data/rustlabsDurabilityData.json'):
     """
 
     Finds the durability of an item based on the name, shortname or ID of the item.
@@ -147,5 +147,5 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
                 return f"Trying to {raidType}raid: {returnName}\nBest option to {raidType}raid: {key}\nTime to {raidType}raid: {value[3]}\nQuantity needed: {value[1]}"
             
 # File Locations
-itemsFile = r'data\items.json'
-durabFile = r'data\rustlabsDurabilityData.json'
+itemsFile = r'data/items.json'
+durabFile = r'data/rustlabsDurabilityData.json'

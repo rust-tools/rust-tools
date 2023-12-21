@@ -3,8 +3,8 @@ import functions as cost
 
 def consoleCalc():
     # File Locations
-    itemsFile = r'data\items.json'
-    durabFile = r'data\rustlabsDurabilityData.json'
+    itemsFile = r'data/items.json'
+    durabFile = r'data/rustlabsDurabilityData.json'
 
     # Inputs
     input1 = input("What do you want to raid? ")
