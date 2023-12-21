@@ -58,14 +58,28 @@
 
                             document.getElementById('raidType').onchange = function() {
                                 var submitButton = document.getElementById('idSubmit');
+                                var submitBtn = document.querySelector('.submitBtn');
                                 var raidType = this.value;
 
                                 if (raidType === 'explo') {
                                     submitButton.innerHTML = 'BOOM!';
+                                    changeHoverBackground('static/img/boom.png', '160%', 'darkred');
                                 } else if (raidType === 'eco') {
                                     submitButton.innerHTML = 'CHOP!';
+                                    changeHoverBackground('static/img/Hatchet_icon.png', 'cover', 'white');
                                 }
                             
+                            }
+                            function changeHoverBackground(imageUrl, styleSize, styleColor) {
+                                var style = document.createElement('style');
+                                style.innerHTML = `
+                                    .submitBtn:hover {
+                                        background-image: url('${imageUrl}');
+                                        background-size: ${styleSize};
+                                        color: ${styleColor};
+                                    }
+                                `;
+                                document.head.appendChild(style);
                             }
                         }
                 </script>
