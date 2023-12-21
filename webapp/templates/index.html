@@ -34,6 +34,12 @@
                             var raidType = localStorage.getItem('raidType');
                             var itemType = localStorage.getItem('itemType');
 
+                            if (document.getElementById('raidType').value === 'explo') {
+                                document.getElementById('idSubmit').innerHTML = 'BOOM!';
+                            } else if (document.getElementById('raidType').value === 'eco') {
+                                document.getElementById('idSubmit').innerHTML = 'CHOP!';
+                            }
+
                             // If there are, set the selected options
                             if (raidType) {
                                 document.getElementById('raidType').value = raidType;
@@ -49,9 +55,20 @@
                             document.getElementById('itemType').onchange = function() {
                                 localStorage.setItem('itemType', this.value);
                             }
+
+                            document.getElementById('raidType').onchange = function() {
+                                var submitButton = document.getElementById('idSubmit');
+                                var raidType = this.value;
+
+                                if (raidType === 'explo') {
+                                    submitButton.innerHTML = 'BOOM!';
+                                } else if (raidType === 'eco') {
+                                    submitButton.innerHTML = 'CHOP!';
+                                }
+                            
+                            }
                         }
                 </script>
-                    
 
                 <!-- The big input box, contains the item that gets sent to the calculator -->
                 <input 
@@ -75,8 +92,17 @@
                         var datalist = document.getElementById('autoSuggest');
                         datalist.innerHTML = '';
 
+                        var itemType = document.getElementById('itemType').value;
+                        if (itemType === 'deployable') {
+                            var suggestPath = "{{ url_for('static', filename='deployableSuggests.json') }}";
+                        } else if (itemType === 'vehicle') {
+                            var suggestPath = "{{ url_for('static', filename='vehicleSuggests.json') }}";
+                        } else if (itemType === 'building') {
+                            var suggestPath = "{{ url_for('static', filename='buildingSuggests.json') }}";
+                        }
+
                         // Fetches the JSON file containing all the items, and filters the list based on user input.
-                        fetch("{{ url_for('static', filename='suggests.json') }}")
+                        fetch(suggestPath)
                             .then(response => response.json())
                             .then(suggestions => {
                                 var filteredSuggestions = suggestions.filter(function(suggestion) {
@@ -96,6 +122,7 @@
 
                 <!-- Button that submits the input to the pythonFunctions.py file -->
                 <button type="submit" id="idSubmit" class="submitBtn" value="Submit">BOOM!</button>
+
 
             </form>
 
