@@ -1,28 +1,3 @@
-
-# result = findDurability("rustlabsDurabilityData.json", "deployable", input_data, "explo")
-
-
-# from flask import Flask, redirect, url_for, request
-# import pythonFunction
-
-
-# app = Flask(__name__)
-
-# @app.route("/")
-# def formPage():
-#     id1 = request.form['id']
-#     return redirect(url_for('results', idData=id1))
-
-
-# @app.route("/<idData>")
-# def results():
-#     global idData
-#     return pythonFunction.findDurability("rustlabsDurabilityData.json", "deployable", idData, "explo")
-
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
 from flask import Flask, render_template, request
 import pythonFunctions
 
