@@ -1,34 +1,11 @@
-
-# result = findDurability("rustlabsDurabilityData.json", "deployable", input_data, "explo")
-
-
-# from flask import Flask, redirect, url_for, request
-# import pythonFunction
-
-
-# app = Flask(__name__)
-
-# @app.route("/")
-# def formPage():
-#     id1 = request.form['id']
-#     return redirect(url_for('results', idData=id1))
-
-
-# @app.route("/<idData>")
-# def results():
-#     global idData
-#     return pythonFunction.findDurability("rustlabsDurabilityData.json", "deployable", idData, "explo")
-
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
 from flask import Flask, render_template, request
 import pythonFunctions
 
+# Declares the app variable to start the webapp
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+# Renders the index.html page with the result variable. If the request method is POST, it will run the pythonFunctions.findDurability function and return the result to the index.html page
+@app.route('/', methods=['GET', 'POST']) 
 def home():
     if request.method == 'POST':
         input_data = request.form.get('getId')
@@ -39,5 +16,6 @@ def home():
         return render_template('index.html', result=result)
     return render_template('index.html', result="waiting for input")
 
+# Runs the app
 if __name__ == "__main__":
     app.run(debug=True)
