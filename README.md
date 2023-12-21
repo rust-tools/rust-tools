@@ -15,7 +15,7 @@ A guide to what file does what and what folder contains what. Use this if you're
 ## /webapp/
 Contains all the files that are necessary for running the webapp. This includes an edited copy of __functions.py__ (__pythonFunctions.py__), meaning that this folder together with /data/ could run the app standalone.
 ### /static/
-/font/, /img/, and __/style.css__ are responsible for the look and feel of the webapp. We suggest you leave these alone. __/suggests.json__ contains a list of items that the search suggest will suggest, but does _not_ contain every item, so it will not suggest for every single item.
+/font/, /img/, and __/style.css__ are responsible for the look and feel of the webapp. We suggest you leave these alone. __/suggests.json__ and it's subfiles contain a list of items that the search suggest will suggest, but do _not_ contain every item, so it will not suggest for every single item.
 ### /templates/
 Has one file, __/index.html__, which contains the build of the webapp, including some simple JS.
 ### /pythonFunctions.py
