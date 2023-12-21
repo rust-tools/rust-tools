@@ -30,20 +30,15 @@
                     document.getElementById('inputbox').addEventListener('keyup', function() {
                         var input = this.value;
                         var datalist = document.getElementById('autoSuggest');
-                
-                        // Clear previous options
                         datalist.innerHTML = '';
-                
-                        // Fetch new suggestions based on input
+
                         fetch("{{ url_for('static', filename='suggests.json') }}")
                             .then(response => response.json())
                             .then(suggestions => {
-                                // Filter suggestions
                                 var filteredSuggestions = suggestions.filter(function(suggestion) {
                                     return suggestion.toLowerCase().includes(input.toLowerCase());
                                 });
-                
-                                // Create new options and add them to the datalist
+
                                 filteredSuggestions.forEach(function(suggestion) {
                                     var option = document.createElement('option');
                                     option.value = suggestion;
@@ -63,26 +58,10 @@
                 {% if result %}
                 <p>{{ result }}</p>
                 {% else %}
-                <p>Error</p>
+                <p>Please input an item...</p>
                 {% endif %}
                 {% endautoescape %}
             </div>
-            <!-- <script>
-                function sendData() {
-                    var inputData = document.getElementById("inputbox").value;
-    
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("POST", "/webapp/script.py", true);
-                    xhr.setRequestHeader('Content-Type', 'application/json');
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState === 4 && xhr.status === 200) {
-                            var json = JSON.parse(xhr.responseText);
-                            document.getElementById("outputText").innerHTML = xhr.responseText;
-                        }
-                    };
-                    xhr.send(JSON.stringify({inputData: inputData}));
-                }
-            </script> -->
         </div>
     </div>
 </body>
