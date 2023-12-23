@@ -41,9 +41,9 @@ Contains the required pip packages to run the app. Use $pip install -r requireme
   
 
 # Known Bugs
-- Vehicle & Building types return "Not a valid item name or ID." as item in the output box
 - Search suggest does not contain every item
 - Search suggest sometimes suggests invalid items (e.g. car)
-- Background does not stretch properly
+- Does not launch properly on some systems
+- Homing missile is suggested for non-airborne targets
 
 Find a bug? Let us know!
