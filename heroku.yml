@@ -3,3 +3,8 @@ build:
     web: Dockerfile
 # run:
   # web: bundle exec puma -C config/puma.rb
+
+run:
+  web:
+    command:
+      - python3 wsgi.py
