@@ -15,7 +15,7 @@ elif useLegacy == False:
 app = Flask(__name__)
 
 # Renders the index.html page with the result variable. If the request method is POST, it will run the pythonFunctions.findDurability function and return the result to the index.html page
-@app.route('/', methods=['GET', 'POST']) 
+@app.route('/raidtool', methods=['GET', 'POST']) 
 def home():
     if request.method == 'POST':
         input_data = request.form.get('getId')
@@ -23,8 +23,16 @@ def home():
         itemType = request.form.get('itemType')
         print(itemType, input_data, raidType)
         result = pythonFunctions.findDurability(itemType, input_data, raidType)
-        return render_template(use_template, result=result)
-    return render_template(use_template, result="waiting for input")
+        return render_template('raidtool.html', result=result)
+    return render_template('raidtool.html', result="waiting for input")
+
+@app.route('/')
+def index():
+    return render_template(use_template)
+
+@app.route('/home')
+def homePage():
+    return render_template(use_template)
 
 # Runs the app
 if __name__ == "__main__":
