@@ -4,7 +4,7 @@ After many struggles, we finally produced a functional webapp that contains a Ra
 Built by Olivier Broekman and Bernd van Ruremonde (FreezeSpell), using dependencies from rustLabs.
 
 # How to Use
-To run this webapp locally, run the file /webapp/__script.py__ and then go to http://127.0.0.1:5000 in your browser. NOTE: Internet Explorer is not fully supported, and not tested properly. Most of the functionality should still be there, though. Webapp was mainly tested in Orion browser, built on Apple's WebKit.
+To run this webapp locally, run the file __app.py__ and then go to http://127.0.0.1:5000 in your browser. NOTE: Internet Explorer is not fully supported, and not tested properly. Most of the functionality should still be there, though. Webapp was mainly tested in Orion browser, built on Apple's WebKit.
 
 Once you have the app opened, you firstly have to select your options in the top menu. After, you can input the name of the deployable/building/vehicle you want to raid and click "BOOM!". The output will be displayed in the white text box at the bottom.
 Make sure that you have the correct item type selected (e.g. deployable, vehicle, building), otherwise it will throw an error.  
