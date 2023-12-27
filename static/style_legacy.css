@@ -1,0 +1,99 @@
+/* Honest to god, I am not going to comment a CSS file. This is the most pseudocode it gets, and it's not like I used complicated CSS either. */
+html {
+    background-image: url("img/placeholder.jpg");
+    background-color: rgb(126, 0, 0);
+    background-repeat: no-repeat;
+    background-position: fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 100%;
+}
+
+@font-face {
+    font-family: baseFont;
+    src: url("font/BebasNeue-Regular.ttf")
+}
+
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: fit-content;
+    font-family: baseFont;
+    color: ivory;
+}
+
+.submitBtn {
+    width: 23%;
+    height: 80px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(126, 0, 0);
+    color: white;
+    font-size: 30px;
+    margin: 0%;
+    font-family: baseFont;
+    padding-top: 0%;
+    margin-left: 2%;
+}
+
+.submitBtn:hover {
+    background-image: url("img/boom.png");
+    background-position: center;
+    background-size: cover;
+    background-color: rgb(183, 0, 0);
+    cursor: pointer;
+    border: 2px solid darkred;
+    background-size: 160%;
+    color: darkred;
+}
+
+.dropDowns {
+    width: 40%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    padding: 15px;
+    font-size: 15px;
+    margin-bottom: 3%;
+
+}
+
+#inputbox {
+    width: 55%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    padding: 15px;
+    font-size: 20px;
+    margin: 0%;
+}
+
+#output {
+    background-color: rgba(255, 255, 255, 0.75);
+    color: black;
+    height: fit-content;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    padding-left: 20px;
+    font-size: 25px;
+    font-stretch: 200%;
+    margin-top: 50px;
+}
+
+#breakLine {
+    margin-top: 5%;
+    width: 100%;
+}
+
+#raidType {
+    margin-right: 5%;
+}
