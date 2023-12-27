@@ -1,99 +1,89 @@
-/* Honest to god, I am not going to comment a CSS file. This is the most pseudocode it gets, and it's not like I used complicated CSS either. */
-html {
-    background-image: url("img/placeholder.jpg");
-    background-color: rgb(126, 0, 0);
-    background-repeat: no-repeat;
-    background-position: fixed;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    min-height: 100%;
+:root {
+    --cBlue: #5386E4;
+    --cBlack: #32292F;
+    --cGreen: #517664;
+    --cAqua: #0FF4C6;
+    --cWhite: #F7EBE8;
 }
 
 @font-face {
-    font-family: baseFont;
-    src: url("font/BebasNeue-Regular.ttf")
+    font-family: DMsans;
+    src: url('font/DMSANS/static/DMSans-Regular.ttf')
 }
 
-.main {
+@font-face {
+    font-family: DMsans-italic;
+    src: url('font/DMSANS/static/DMSans-SemiBoldItalic.ttf')
+
+}
+
+html {
+    background-image: linear-gradient(to top, #0ff4c6, #FFFFFF); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    height: 100%;
+}
+
+.homePage {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.75);
-    padding: 20px;
-    border-radius: 10px;
-    width: 500px;
-    height: fit-content;
-    font-family: baseFont;
-    color: ivory;
+    font-family: DMsans-italic, sans-serif;
+    color: var(--cBlack);
 }
 
-.submitBtn {
-    width: 23%;
-    height: 80px;
-    border-radius: 10px;
-    border: none;
-    background-color: rgb(126, 0, 0);
-    color: white;
-    font-size: 30px;
-    margin: 0%;
-    font-family: baseFont;
-    padding-top: 0%;
-    margin-left: 2%;
-}
-
-.submitBtn:hover {
-    background-image: url("img/boom.png");
-    background-position: center;
-    background-size: cover;
-    background-color: rgb(183, 0, 0);
-    cursor: pointer;
-    border: 2px solid darkred;
-    background-size: 160%;
-    color: darkred;
-}
-
-.dropDowns {
-    width: 40%;
-    height: 50px;
-    border-radius: 10px;
-    border: none;
-    padding: 15px;
-    font-size: 15px;
-    margin-bottom: 3%;
-
-}
-
-#inputbox {
-    width: 55%;
-    height: 50px;
-    border-radius: 10px;
-    border: none;
-    padding: 15px;
-    font-size: 20px;
-    margin: 0%;
-}
-
-#output {
-    background-color: rgba(255, 255, 255, 0.75);
+.sidepanel {
+    height: 40%; 
+    width: 0; 
+    position: fixed; 
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #5386e4; 
+    overflow-x: hidden; 
+    padding-top: 60px;
+    padding-left: 0px; 
+    transition: 0.5s; 
     color: black;
-    height: fit-content;
-    border-radius: 10px;
-    border: none;
-    padding: 10px;
-    padding-left: 20px;
+  }
+  
+  /* The sidepanel links */
+  .sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-family: DMsans, sans-serif;
     font-size: 25px;
-    font-stretch: 200%;
-    margin-top: 50px;
-}
-
-#breakLine {
-    margin-top: 5%;
-    width: 100%;
-}
-
-#raidType {
-    margin-right: 5%;
-}
+    color: #f7ebe8;
+    display: block;
+    transition: 0.3s;
+    padding-bottom: 25px;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidepanel a:hover {
+    color: #32292f;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidepanel .closebtn {
+    position: absolute;
+    top: 5px;
+    font-size: 36px;
+    margin-left: -10px;
+  }
+  
+  /* Style the button that is used to open the sidepanel */
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #5386E4;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
