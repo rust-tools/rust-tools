@@ -17,24 +17,68 @@
 
 }
 
+@font-face {
+    font-family: DMsans-bold;
+    src: url('font/DMSANS/static/DMSans-Bold.ttf')
+}
+
 html {
-    background-image: linear-gradient(to top, #0ff4c6, #FFFFFF); 
+    background-image: linear-gradient(to top, #0ff4c6, ivory); 
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
     height: 100%;
 }
 
-.homePage {
+#header {
+    font-family: DMsans-italic, sans-serif;
+    font-size: 50px;
+    opacity: 1;
+}
+
+#subHeader {
+    font-family: DMsans, sans-serif;
+    font-size: 20px;
+    opacity: 1;
+}
+
+.main {
+    background-color: rgba(245,245,245,0.5);
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: DMsans-italic, sans-serif;
+    border-radius: 10px;
+    width: 500px;
+    height: fit-content;
     color: var(--cBlack);
 }
 
-.sidepanel {
+.mainBtn {
+    opacity: 1;
+    width: 150px;
+    height: 50px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 60px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-width: 0;
+    background-color: var(--cBlue);
+    font-size: 20px;
+    font-family: DMsans-bold, sans-serif;
+    color: var(--cWhite);
+}
+
+.mainBtn:hover {
+    opacity: 1;
+    background-color: #1b65ef;
+    cursor: pointer;
+    color: var(--cWhite);
+}
+
+.clsSidePanel {
     height: 40%; 
     width: 0; 
     position: fixed; 
@@ -50,7 +94,7 @@ html {
   }
   
   /* The sidepanel links */
-  .sidepanel a {
+  .clsSidePanel a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-family: DMsans, sans-serif;
@@ -60,14 +104,28 @@ html {
     transition: 0.3s;
     padding-bottom: 25px;
   }
+
+  .sidePanelTop {
+    text-decoration: underline;
+  }
+
+  .sidePanelBottom {
+    position: absolute;
+    text-decoration: underline;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
+  }
   
   /* When you mouse over the navigation links, change their color */
-  .sidepanel a:hover {
+  .clsSidePanel a:hover {
     color: #32292f;
   }
   
   /* Position and style the close button (top right corner) */
-  .sidepanel .closebtn {
+  .clsSidePanel .closeBtn {
     position: absolute;
     top: 5px;
     font-size: 36px;
@@ -75,7 +133,7 @@ html {
   }
   
   /* Style the button that is used to open the sidepanel */
-  .openbtn {
+  .openBtn {
     font-size: 20px;
     cursor: pointer;
     background-color: #5386E4;
@@ -84,6 +142,6 @@ html {
     border: none;
   }
   
-  .openbtn:hover {
+  .openBtn:hover {
     background-color: #444;
   }
