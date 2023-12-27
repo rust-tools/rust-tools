@@ -15,18 +15,25 @@
         <title>RRCC</title>
     </head>
 <body>
-    <div id="mySidepanel" class="sidepanel">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&timesbar;</a>
-        <a href="#">Home</a>
-        <a href="#">Raidtool</a>
-        <a href="#">Login</a>
-        <a href="#">Help</a>
+    <div id="sidePanel" class="clsSidePanel">
+        <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&timesbar;</a>
+        <div class="sidePanelTop">
+            <a href="home">home</a>
+            <a href="raidtool">raidTool</a>
+            <a href="login">login</a>
+            <a href="help">help</a>
+        </div>
+        <div class="sidePanelBottom">
+            <a href="https://github.com/OlivierBroekman/rust-raid-cost-calculator" target="_blank">sourceCode</a>
+        </div>
     </div>
       
-    <button class="openbtn" onclick="openNav()">&#9776;</button>
+    <button class="openBtn" onclick="openNav()">&#9776;</button>
     <div class="wrapper">
-        <div class="homePage">
+        <div class="main">
             <h1 align="center" id="header">&lt;rustTools></h1>
+            <p align="center" id="subHeader">Rust, simplified.</p>
+            <button align="center" class="mainBtn" onclick="location.href='raidtool'">TRY IT</button>
         </div>
     </div>
 
