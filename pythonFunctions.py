@@ -161,14 +161,15 @@ def findRecycleOutput(itemName: str, recycleFile: str = r'data/rustlabsRecycleDa
         x = findID(itemsFile, Id, True)
         if itemName.lower() == x.lower():
             print(x)
-        for dictionary in datalist:
-            y = findID(itemsFile, dictionary['id'], True)
-            # for key,value in dictionary.items():
-            return y
-    pass
+            for dictionary in datalist:
+                recycleOutput = findID(itemsFile, dictionary['id'], True)
+                probability = dictionary['probability']
+                probability = "{:.0%}".format(probability)
+                quantity = dictionary['quantity']
+            return f"Trying to recycle: {itemName}<br>The output is: {quantity} {recycleOutput} with a {probability} probability."
             
 # File Locations
 itemsFile = r'data/items.json'
 durabFile = r'data/rustlabsDurabilityData.json'
 recycleFile = r'data/rustlabsRecycleData.json'
-print(findRecycleOutput('Hide Halterneck'))
+print(findRecycleOutput('Workbench Level 3'))
