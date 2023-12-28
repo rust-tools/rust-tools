@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "rust-raid-cost-calculator"
+name = "rust-tools"
 version = "0.1.0"
 description = ""
 authors = ["Bernd van Ruremonde <berndvanruremonde@gmail.com>"]
