@@ -26,6 +26,14 @@ def raidTool():
         return render_template('raidtool.html', result=result)
     return render_template('raidtool.html', result="Waiting for input...")
 
+@app.route('/recycletool', methods=['GET', 'POST'])
+def recycleTool():
+    if request.method == 'POST':
+        input_data = request.form.get('getId')
+        result = pythonFunctions.findRecycle(input_data)
+        return render_template('recycletool.html', result=result)
+    return render_template('recycletool.html', result="Waiting for input...")
+
 @app.route('/')
 def index():
     return render_template(use_template)
@@ -37,6 +45,10 @@ def homePage():
 @app.route('/404')
 def errorPage():
     return render_template('pageNotFound.html')
+
+@app.route('/login')
+def loginPage():
+    return render_template('loginPage.html')
 
 # Runs the app
 if __name__ == "__main__":
