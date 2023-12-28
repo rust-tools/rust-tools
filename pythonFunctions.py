@@ -26,14 +26,17 @@ def findID(filePath = r'data/items.json', search_term=None, search_by_id=False):
     # If search_by_id is True, it will search by ID instead of name
     # If no match is found, it will return "Not a valid item name or id."   
     for id, info in data.items():
-        search_term = search_term.lower()
         if search_by_id:
             if id.lower() == search_term:
                 return info['name']
-        elif info['name'].lower() == search_term:
-            return id
-        elif info['shortname'].lower() == search_term:
+            
+        else:
+            search_term = search_term.lower() 
+            if info['name'].lower() == search_term:
                 return id
+            elif info['shortname'].lower() == search_term:
+                    return id
+                       
     return "Not a valid item name or id."
 
 
@@ -123,6 +126,9 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
     # Delete the items that are not melee or explosive
     for i in dellist:
         del dict_[i]
+
+    if itemType != 'vehicle':
+        del dict_['Homing Missile']
 
     # If the raid type is explo, find the cheapest (sulfur) item to raid with
     if raidType == 'explo':
