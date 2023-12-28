@@ -1,15 +1,3 @@
-/* Set the width of the sidebar to 250px (show it) */
-function openNav() {
-    document.getElementById("sidePanel").style.width = "250px";
-    document.getElementById("sidePanel").style.height = "50%";
-  }
-  
-  /* Set the width of the sidebar to 0 (hide it) */
-  function closeNav() {
-    document.getElementById("sidePanel").style.width = "0";
-    document.getElementById("sidePanel").style.height = "0";
-  }
-  
 // JavaScript code to save the selected options in the dropdown menus, so that they are still selected when the page is refreshed.
 window.onload = function() {
     // Check if there are saved selections
@@ -38,7 +26,6 @@ window.onload = function() {
         localStorage.setItem('itemType', this.value);
     }
 
-
     document.getElementById('raidType').onchange = function() {
         var submitButton = document.getElementById('idSubmit');
         var submitBtn = document.querySelector('.submitBtn');
@@ -49,7 +36,7 @@ window.onload = function() {
             changeHoverBackground('static/img/boom.png', '160%', 'darkred');
         } else if (raidType === 'eco') {
             submitButton.innerHTML = 'CHOP!';
-            changeHoverBackground('static/img/Hatchet_icon.png', '60%', 'white');
+            changeHoverBackground('static/img/Hatchet_icon.png', 'cover', 'white');
         }
     
     }
