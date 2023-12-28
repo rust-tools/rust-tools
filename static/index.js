@@ -37,11 +37,6 @@ window.onload = function() {
     document.getElementById('itemType').onchange = function() {
         localStorage.setItem('itemType', this.value);
     }
-    document.getElementById('idSubmit').addEventListener('click') = function() {
-        var inputBox = document.getElementById('inputbox').value;
-        localStorage.setItem('inputbox', inputBox);
-     } 
-    //FIXME: DOES NOT WORK PROPERLY
 
 
     document.getElementById('raidType').onchange = function() {
