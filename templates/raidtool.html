@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <link href="{{ url_for('static', filename='style_raidtool.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
     <script>
@@ -71,11 +71,6 @@
 
 
             </form>
-
-            <div>
-                <!-- The pretty white line between the input and output -->
-                <hr>
-            </div>
 
             <div id="output">
                 <!-- I'm not even going to lie, Flask looks weird in HTML. This 'prints' the result into the output box when it is available, and 'prints' error message when nothing is there. -->
