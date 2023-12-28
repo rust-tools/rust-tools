@@ -166,7 +166,8 @@ def findRecycleOutput(itemName: str, recycleFile: str = r'data/rustlabsRecycleDa
                 probability = dictionary['probability']
                 probability = "{:.0%}".format(probability)
                 quantity = dictionary['quantity']
-            return f"Trying to recycle: {itemName}<br>The output is: {quantity} {recycleOutput} with a {probability} probability."
+#FIXME: only outputs first 'recycle output' item, not everything
+                return f"Trying to recycle: {itemName}<br>The output is: {quantity} {recycleOutput} with a {probability} probability."
             
 # File Locations
 itemsFile = r'data/items.json'
