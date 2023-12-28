@@ -23,8 +23,8 @@
 }
 
 html {
-    background-image: linear-gradient(to top, #0ff4c6, ivory); 
-    background-repeat: no-repeat;
+  background-image: linear-gradient(170deg,ivory, var(--cAqua)); 
+  background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
     height: 100%;
