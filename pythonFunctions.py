@@ -153,6 +153,22 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
             if value[2] == cheapest:
                 return f"Trying to {raidType}raid: {returnName}<br>Best option to {raidType}raid: {key}<br>Time to {raidType}raid: {value[3]}<br>Quantity needed: {value[1]}"
             
+def findRecycleOutput(itemName: str, recycleFile: str = r'data/rustlabsRecycleData.json'):
+    global itemsFile
+    with open(recycleFile, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    for Id,datalist in data.items():
+        x = findID(itemsFile, Id, True)
+        if itemName.lower() == x.lower():
+            print(x)
+        for dictionary in datalist:
+            y = findID(itemsFile, dictionary['id'], True)
+            # for key,value in dictionary.items():
+            return y
+    pass
+            
 # File Locations
 itemsFile = r'data/items.json'
 durabFile = r'data/rustlabsDurabilityData.json'
+recycleFile = r'data/rustlabsRecycleData.json'
+print(findRecycleOutput('Hide Halterneck'))
