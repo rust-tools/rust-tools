@@ -116,7 +116,7 @@
     border-radius: 10px;
     width: 500px;
     height: fit-content;
-    font-family: baseFont;
+    font-family: DMsans-bold, sans-serif;
     color: ivory;
 }
 
@@ -169,13 +169,13 @@
 
 #output {
     background-color: rgba(255, 255, 255, 0.75);
-    color: black;
+    color: var(--cBlack);
     height: fit-content;
     border-radius: 10px;
     border: none;
     padding: 10px;
     padding-left: 20px;
-    font-size: 25px;
+    font-size: 20px;
     font-stretch: 200%;
     margin-top: 50px;
 }
