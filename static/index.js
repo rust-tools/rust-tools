@@ -1,7 +1,7 @@
 /* Set the width of the sidebar to 250px (show it) */
 function openNav() {
     document.getElementById("sidePanel").style.width = "250px";
-    document.getElementById("sidePanel").style.height = "50%";
+    document.getElementById("sidePanel").style.height = "60%";
   }
   
   /* Set the width of the sidebar to 0 (hide it) */
