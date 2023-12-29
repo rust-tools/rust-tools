@@ -26,6 +26,14 @@ def raidTool():
         return render_template('raidtool.html', result=result)
     return render_template('raidtool.html', result="Waiting for input...")
 
+@app.route('/recycletool', methods=['GET', 'POST'])
+def recycleTool():
+    if request.method == 'POST':
+        input_item = request.form.get('getItem')
+        result = list(pythonFunctions.findRecycleOutput(input_item))
+        return render_template('recycletool.html', result=result)
+    return render_template('recycletool.html', result="Waiting for input...")
+
 @app.route('/')
 def index():
     return render_template(use_template)
