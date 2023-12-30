@@ -79,7 +79,7 @@ html {
 }
 
 .clsSidePanel {
-    height: 40%; 
+    height: 60%; 
     width: 0; 
     position: fixed; 
     z-index: 1;
@@ -88,7 +88,9 @@ html {
     background-color: #5386e4; 
     overflow-x: hidden; 
     padding-top: 60px;
-    padding-left: 0px; 
+    padding-left: 0px;
+    border-radius: 0px;
+    border-width: 0; 
     transition: 0.5s; 
     color: black;
   }
@@ -139,6 +141,8 @@ html {
     background-color: #5386E4;
     color: white;
     padding: 10px 15px;
+    border-radius: 0;
+    border-width: 0;
     border: none;
   }
   

@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.11.5"
 flask = "^3.0.0"
 gunicorn = "^21.2.0"
+flask-login = "^0.6.3"
 
 
 [build-system]
