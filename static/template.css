@@ -21,65 +21,8 @@
     font-family: DMsans-bold;
     src: url('font/DMSANS/static/DMSans-Bold.ttf')
 }
-
-html {
-  background-image: linear-gradient(170deg,ivory, var(--cAqua)); 
-  background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    height: 100%;
-}
-
-#header {
-    font-family: DMsans-italic, sans-serif;
-    font-size: 50px;
-    opacity: 1;
-}
-
-#subHeader {
-    font-family: DMsans, sans-serif;
-    font-size: 20px;
-    opacity: 1;
-}
-
-.main {
-    background-color: rgba(245,245,245,0.5);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-    width: 500px;
-    height: fit-content;
-    color: var(--cBlack);
-}
-
-.mainBtn {
-    opacity: 1;
-    width: 150px;
-    height: 50px;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 60px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border-width: 0;
-    background-color: var(--cBlue);
-    font-size: 20px;
-    font-family: DMsans-bold, sans-serif;
-    color: var(--cWhite);
-}
-
-.mainBtn:hover {
-    opacity: 1;
-    background-color: #1b65ef;
-    cursor: pointer;
-    color: var(--cWhite);
-}
-
 .clsSidePanel {
-    height: 60%; 
+    height: 40%; 
     width: 0; 
     position: fixed; 
     z-index: 1;
@@ -88,9 +31,7 @@ html {
     background-color: #5386e4; 
     overflow-x: hidden; 
     padding-top: 60px;
-    padding-left: 0px;
-    border-radius: 0px;
-    border-width: 0; 
+    padding-left: 0px; 
     transition: 0.5s; 
     color: black;
   }
@@ -141,11 +82,26 @@ html {
     background-color: #5386E4;
     color: white;
     padding: 10px 15px;
-    border-radius: 0;
-    border-width: 0;
     border: none;
   }
   
   .openBtn:hover {
     background-color: #444;
   }
+
+
+  html {
+    background-image: linear-gradient(170deg,ivory, var(--cAqua)); 
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 100%;
+}
+
+@font-face {
+    font-family: baseFont;
+    src: url("font/BebasNeue-Regular.ttf")
+}

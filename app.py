@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request
-import pythonFunctions
+from flask import Flask, render_template, session, request
+from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 import os
+
+import pythonFunctions
 from appSettings import useLegacy, debugMode
 
 # Declare proper settings
@@ -13,6 +15,9 @@ elif useLegacy == False:
 
 # Declares the app variable to start the webapp
 app = Flask(__name__)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 # Renders the index.html page with the result variable. If the request method is POST, it will run the pythonFunctions.findDurability function and return the result to the index.html page
 @app.route('/raidtool', methods=['GET', 'POST']) 
@@ -45,6 +50,10 @@ def homePage():
 @app.route('/404')
 def errorPage():
     return render_template('pageNotFound.html')
+
+@app.route('/login')
+def loginPage():
+    return render_template('loginPage.html')
 
 # Runs the app
 if __name__ == "__main__":
