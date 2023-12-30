@@ -4,18 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
-    <link href="{{ url_for('static', filename='template.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style_recycletool.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
     <script>
         // These variables are used in the index.js file, and are used to get the JSON files that contain the item names.
-        var deployableSuggestsUrl = "{{ url_for('static', filename='deployableSuggests.json') }}";
-        var vehicleSuggestsUrl = "{{ url_for('static', filename='vehicleSuggests.json') }}";
-        var buildingSuggestsUrl = "{{ url_for('static', filename='buildingSuggests.json') }}";
+        var itemSuggestsUrl = "{{ url_for('static', filename='itemSuggests.json') }}";
     </script>
-    <script src="{{ url_for('static', filename='index.js') }}" defer></script> <!-- Main script for the page -->
-    <title>RRCC</title>
+    <script src="{{ url_for('static', filename='recycletool.js') }}" defer></script> <!-- Main script for the page -->
+    <title>Rust Recycle Tool</title>
 </head>
-
 <body>
     <div id="sidePanel" class="clsSidePanel">
         <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&timesbar;</a>
@@ -25,7 +22,8 @@
             <a href="recycletool">recycleTool</a>
             <a href="login">login</a>
             <a href="404">help</a>
-            <a href="404">donate</a>
+            <a href="404">about</a>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=98H3AK3BD3D9L" target="_blank">donate</a>
         </div>
         <div class="sidePanelBottom">
             <a href="https://github.com/OlivierBroekman/rust-raid-cost-calculator" target="_blank">sourceCode</a>
@@ -33,6 +31,45 @@
     </div>
       
     <button class="openBtn" onclick="openNav()">&#9776;</button>
+    <div class="wrapper">
+        <div class="main">
+            <h1 align="center" id="header">Recycle Tool</h1>
+            <form align="center" method="POST">
+                <!-- The big input box, contains the item that gets sent to the calculator -->
+                <input 
+                    type="text"
+                    name="getItem"
+                    placeholder="Enter item..."
+                    id="recyclerinputbox"
+                    list="recycleAutoSuggest"
+                    required>
 
+                <datalist id="recycleAutoSuggest" maxlength="3">
+                    {% for item in items %}
+                    <option value="{{ item }}">
+                    {% endfor %}
+                </datalist>
+
+                <!-- Button that submits the input to the pythonFunctions.py file -->
+                <button type="submit" id="idSubmit" class="submitBtn" value="Submit">Recycle</button>
+
+
+            </form>
+
+            <div id="output">
+                <!-- I'm not even going to lie, Flask looks weird in HTML. This 'prints' the result into the output box when it is available, and 'prints' error message when nothing is there. -->
+                {% autoescape false%}
+                {% if result %}
+                <p>{{ item }}</p>
+                {% for i in range %}
+                <p>{{ result[i] }}</p>
+                {% endfor %}
+                {% else %}
+                <p>Please input a valid item...</p>
+                {% endif %} <!-- The autoescape element prevents the page from displaying the <br> tags, and instead interprets them as line breaks. -->
+                {% endautoescape %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>

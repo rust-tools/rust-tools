@@ -34,10 +34,10 @@ def raidTool():
 @app.route('/recycletool', methods=['GET', 'POST'])
 def recycleTool():
     if request.method == 'POST':
-        input_data = request.form.get('getId')
-        result = pythonFunctions.findRecycle(input_data)
-        return render_template('recycletool.html', result=result)
-    return render_template('recycletool.html', result="Waiting for input...")
+        input_item = request.form.get('getItem')
+        result = list(pythonFunctions.findRecycleOutput(input_item))
+        return render_template('recycletool.html', range = range(len(result)), result=result, item = f'Trying to recycle: {input_item}')
+    return render_template('recycletool.html', result="Waiting for input...", range = range(0), item = "Waiting for input...")
 
 @app.route('/')
 def index():

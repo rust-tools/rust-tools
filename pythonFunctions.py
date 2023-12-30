@@ -128,7 +128,8 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
         del dict_[i]
 
     if itemType != 'vehicle':
-        del dict_['Homing Missile']
+        if 'Homing Missile' in dict_.keys():
+            del dict_['Homing Missile']
 
     # If the raid type is explo, find the cheapest (sulfur) item to raid with
     if raidType == 'explo':
@@ -160,17 +161,14 @@ def findRecycleOutput(itemName: str, recycleFile: str = r'data/rustlabsRecycleDa
     for Id,datalist in data.items():
         x = findID(itemsFile, Id, True)
         if itemName.lower() == x.lower():
-            print(x)
             for dictionary in datalist:
                 recycleOutput = findID(itemsFile, dictionary['id'], True)
                 probability = dictionary['probability']
                 probability = "{:.0%}".format(probability)
                 quantity = dictionary['quantity']
-#FIXME: only outputs first 'recycle output' item, not everything
-                yield f"Trying to recycle: {itemName}<br>The output is: {quantity} {recycleOutput} with a {probability} probability."
+                yield f"{quantity} {recycleOutput} with a {probability} probability."
             
 # File Locations
 itemsFile = r'data/items.json'
 durabFile = r'data/rustlabsDurabilityData.json'
 recycleFile = r'data/rustlabsRecycleData.json'
-print(findRecycleOutput('Workbench Level 3'))

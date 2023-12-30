@@ -94,7 +94,6 @@
     background-color: #444;
   }
 
-
   html {
     background-image: linear-gradient(170deg,ivory, var(--cAqua)); 
     background-repeat: no-repeat;
@@ -112,84 +111,69 @@
 }
 
 .main {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.75);
-    padding: 20px;
-    border-radius: 10px;
-    width: 500px;
-    height: fit-content;
-    font-family: DMsans-bold, sans-serif;
-    color: ivory;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  height: fit-content;
+  font-family: DMsans-bold, sans-serif;
+  color: ivory;
 }
 
 .submitBtn {
-    width: 23%;
-    height: 80px;
-    border-radius: 10px;
-    border: none;
-    background-color: var(--cBlue);
-    color: white;
-    font-size: 30px;
-    margin: 0%;
-    font-family: baseFont;
-    padding-top: 0%;
-    margin-left: 2%;
+  width: 23%;
+  height: 80px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--cBlue);
+  color: white;
+  font-size: 30px;
+  margin: 0%;
+  font-family: baseFont;
+  padding-top: 0%;
+  margin-left: 2%;
 }
 
 .submitBtn:hover {
-    background-image: url("img/boom.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: var(--cBlue);
-    cursor: pointer;
-    border: 2px solid var(--cBlack);
-    background-size: 160%;
-    color: var(--cBlack);
+  background-image: url("img/Recycler_icon.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: var(--cBlue);
+  cursor: pointer;
+  border: 2px solid var(--cBlack);
+  background-size: 160%;
+  color: var(--cBlack);
 }
 
-.dropDowns {
-    width: 47%;
-    height: 50px;
-    border-radius: 10px;
-    border: none;
-    padding: 15px;
-    font-size: 15px;
-    margin-bottom: 3%;
-
-}
-
-#inputbox {
-    width: 68%;
-    height: 50px;
-    border-radius: 10px;
-    border: none;
-    padding: 15px;
-    font-size: 20px;
-    margin: 0%;
+#recyclerinputbox {
+  width: 68%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  padding: 15px;
+  font-size: 20px;
+  margin: 0%;
 }
 
 #output {
-    background-color: rgba(255, 255, 255, 0.75);
-    color: var(--cBlack);
-    height: fit-content;
-    border-radius: 10px;
-    border: none;
-    padding: 10px;
-    padding-left: 20px;
-    font-size: 20px;
-    font-stretch: 200%;
-    margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: var(--cBlack);
+  height: fit-content;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  padding-left: 20px;
+  font-size: 20px;
+  font-stretch: 200%;
+  margin-top: 50px;
 }
 
 #breakLine {
-    margin-top: 5%;
-    width: 100%;
-}
-
-#raidType {
-    margin-right: 5%;
+  margin-top: 5%;
+  width: 100%;
 }
