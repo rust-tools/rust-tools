@@ -160,7 +160,6 @@ def findRecycleOutput(itemName: str, recycleFile: str = r'data/rustlabsRecycleDa
     for Id,datalist in data.items():
         x = findID(itemsFile, Id, True)
         if itemName.lower() == x.lower():
-            print(x)
             for dictionary in datalist:
                 recycleOutput = findID(itemsFile, dictionary['id'], True)
                 probability = dictionary['probability']

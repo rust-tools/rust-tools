@@ -8,9 +8,7 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
     <script>
         // These variables are used in the index.js file, and are used to get the JSON files that contain the item names.
-        var deployableSuggestsUrl = "{{ url_for('static', filename='deployableSuggests.json') }}";
-        var vehicleSuggestsUrl = "{{ url_for('static', filename='vehicleSuggests.json') }}";
-        var buildingSuggestsUrl = "{{ url_for('static', filename='buildingSuggests.json') }}";
+        var itemSuggestsUrl = "{{ url_for('static', filename='itemSuggests.json') }}";
     </script>
     <script src="{{ url_for('static', filename='index.js') }}" defer></script> <!-- Main script for the page -->
     <title>Rust Recycle Tool</title>
