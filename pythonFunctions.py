@@ -128,7 +128,8 @@ def findDurability(itemType: str, itemName: str, raidType: str = 'explo', durabF
         del dict_[i]
 
     if itemType != 'vehicle':
-        del dict_['Homing Missile']
+        if 'Homing Missile' in dict_.keys():
+            del dict_['Homing Missile']
 
     # If the raid type is explo, find the cheapest (sulfur) item to raid with
     if raidType == 'explo':
