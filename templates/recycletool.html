@@ -10,10 +10,9 @@
         // These variables are used in the index.js file, and are used to get the JSON files that contain the item names.
         var itemSuggestsUrl = "{{ url_for('static', filename='itemSuggests.json') }}";
     </script>
-    <script src="{{ url_for('static', filename='index.js') }}" defer></script> <!-- Main script for the page -->
+    <script src="{{ url_for('static', filename='recycletool.js') }}" defer></script> <!-- Main script for the page -->
     <title>Rust Recycle Tool</title>
 </head>
-
 <body>
     <div id="sidePanel" class="clsSidePanel">
         <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&timesbar;</a>
@@ -40,18 +39,18 @@
                     type="text"
                     name="getItem"
                     placeholder="Enter item..."
-                    id="inputbox"
-                    list="autoSuggest"
+                    id="recyclerinputbox"
+                    list="recycleAutoSuggest"
                     required>
 
-                <datalist id="autoSuggest" maxlength="3">
+                <datalist id="recycleAutoSuggest" maxlength="3">
                     {% for item in items %}
                     <option value="{{ item }}">
                     {% endfor %}
                 </datalist>
 
                 <!-- Button that submits the input to the pythonFunctions.py file -->
-                <button type="submit" id="idSubmit" class="submitBtn" value="Submit">Recycle!</button>
+                <button type="submit" id="idSubmit" class="submitBtn" value="Submit">Recycle</button>
 
 
             </form>
