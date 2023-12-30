@@ -3,6 +3,7 @@ def func(x):
         yield i
 
 result = list(func(5))
+print(result)
 for i in range(len(result)):
     print(result[i])
 

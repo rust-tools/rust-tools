@@ -5,3 +5,175 @@
     --cAqua: #0FF4C6;
     --cWhite: #F7EBE8;
 }
+
+@font-face {
+    font-family: DMsans;
+    src: url('font/DMSANS/static/DMSans-Regular.ttf')
+}
+
+@font-face {
+    font-family: DMsans-italic;
+    src: url('font/DMSANS/static/DMSans-SemiBoldItalic.ttf')
+
+}
+
+@font-face {
+    font-family: DMsans-bold;
+    src: url('font/DMSANS/static/DMSans-Bold.ttf')
+}
+
+.clsSidePanel {
+  height: 60%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #5386e4; 
+  overflow-x: hidden; 
+  padding-top: 60px;
+  padding-left: 0px;
+  border-radius: 0px 3px 8px 3px;
+  border-width: 0; 
+  transition: 0.5s; 
+  color: black;
+}
+  
+  /* The sidepanel links */
+  .clsSidePanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-family: DMsans, sans-serif;
+    font-size: 25px;
+    color: #f7ebe8;
+    display: block;
+    transition: 0.3s;
+    padding-bottom: 25px;
+  }
+
+  .sidePanelTop {
+    text-decoration: underline;
+  }
+
+  .sidePanelBottom {
+    position: absolute;
+    text-decoration: underline;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .clsSidePanel a:hover {
+    color: #32292f;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .clsSidePanel .closeBtn {
+    position: absolute;
+    top: 5px;
+    font-size: 36px;
+    margin-left: -10px;
+  }
+  
+  /* Style the button that is used to open the sidepanel */
+  .openBtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #5386E4;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border-width: 0;
+    border: none;
+  }
+  
+  .openBtn:hover {
+    background-color: #444;
+  }
+
+  html {
+    background-image: linear-gradient(170deg,ivory, var(--cAqua)); 
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 100%;
+}
+
+@font-face {
+    font-family: baseFont;
+    src: url("font/BebasNeue-Regular.ttf")
+}
+
+.main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  height: fit-content;
+  font-family: DMsans-bold, sans-serif;
+  color: ivory;
+}
+
+.submitBtn {
+  width: 23%;
+  height: 80px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--cBlue);
+  color: white;
+  font-size: 30px;
+  margin: 0%;
+  font-family: baseFont;
+  padding-top: 0%;
+  margin-left: 2%;
+}
+
+.submitBtn:hover {
+  background-image: url("img/Recycler_icon.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: var(--cBlue);
+  cursor: pointer;
+  border: 2px solid var(--cBlack);
+  background-size: 160%;
+  color: var(--cBlack);
+}
+
+#inputbox {
+  width: 68%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  padding: 15px;
+  font-size: 20px;
+  margin: 0%;
+}
+
+#output {
+  background-color: rgba(255, 255, 255, 0.75);
+  color: var(--cBlack);
+  height: fit-content;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  padding-left: 20px;
+  font-size: 20px;
+  font-stretch: 200%;
+  margin-top: 50px;
+}
+
+#breakLine {
+  margin-top: 5%;
+  width: 100%;
+}

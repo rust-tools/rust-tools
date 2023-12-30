@@ -21,20 +21,23 @@
     font-family: DMsans-bold;
     src: url('font/DMSANS/static/DMSans-Bold.ttf')
 }
+
 .clsSidePanel {
-    height: 40%; 
-    width: 0; 
-    position: fixed; 
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #5386e4; 
-    overflow-x: hidden; 
-    padding-top: 60px;
-    padding-left: 0px; 
-    transition: 0.5s; 
-    color: black;
-  }
+  height: 60%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #5386e4; 
+  overflow-x: hidden; 
+  padding-top: 60px;
+  padding-left: 0px;
+  border-radius: 0px 3px 8px 3px;
+  border-width: 0; 
+  transition: 0.5s; 
+  color: black;
+}
   
   /* The sidepanel links */
   .clsSidePanel a {
@@ -82,6 +85,8 @@
     background-color: #5386E4;
     color: white;
     padding: 10px 15px;
+    border-radius: 8px;
+    border-width: 0;
     border: none;
   }
   
@@ -147,7 +152,7 @@
 }
 
 .dropDowns {
-    width: 40%;
+    width: 47%;
     height: 50px;
     border-radius: 10px;
     border: none;
@@ -158,7 +163,7 @@
 }
 
 #inputbox {
-    width: 55%;
+    width: 68%;
     height: 50px;
     border-radius: 10px;
     border: none;

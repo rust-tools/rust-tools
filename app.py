@@ -31,8 +31,8 @@ def recycleTool():
     if request.method == 'POST':
         input_item = request.form.get('getItem')
         result = list(pythonFunctions.findRecycleOutput(input_item))
-        return render_template('recycletool.html', range = range(len(result)), result=result)
-    return render_template('recycletool.html', result="Waiting for input...")
+        return render_template('recycletool.html', range = range(len(result)), result=result, item = f'Trying to recycle: {input_item}')
+    return render_template('recycletool.html', result="Waiting for input...", range = range(0), item = "Waiting for input...")
 
 @app.route('/')
 def index():
