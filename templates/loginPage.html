@@ -23,10 +23,9 @@
             <a href="home">home</a>
             <a href="raidtool">raidTool</a>
             <a href="recycletool">recycleTool</a>
-            <a href="login">login</a>
+            <a href="404">login</a>
             <a href="404">help</a>
-            <a href="404">about</a>
-            <a href="https://www.paypal.com/donate/?hosted_button_id=98H3AK3BD3D9L" target="_blank">donate</a>
+            <a href="404">donate</a>
         </div>
         <div class="sidePanelBottom">
             <a href="https://github.com/OlivierBroekman/rust-raid-cost-calculator" target="_blank">sourceCode</a>
@@ -34,6 +33,17 @@
     </div>
       
     <button class="openBtn" onclick="openNav()">&#9776;</button>
-    
+    <div class="wrapper">
+        <div class="main">
+            <h1 align="center" id="header">&lt;logIn></h1>
+            <form>
+                <input type="text" id="username" name="username" placeholder="Username">
+                <input type="password" id="password" name="password" placeholder="Password">
+                <button class="mainBtn" type="submit" onclick="location.href='accountPage'">LOG IN</button>
+                <button class="mainBtn" type="button" onclick="location.href='accountPage'">REGISTER</button>
+            </form>
+            <button align="center" class="mainBtn" onclick="location.href='raidtool'">TRY IT</button>
+        </div>
+    </div>
 </body>
 </html>
