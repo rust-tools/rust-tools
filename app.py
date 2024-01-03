@@ -47,6 +47,10 @@ def homePage():
 def errorPage():
     return render_template('pageNotFound.html')
 
+@app.route('/in-development')
+def devPage():
+    return render_template('devPage.html')
+
 
 # Runs the app
 if __name__ == "__main__":
