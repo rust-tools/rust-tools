@@ -1,10 +1,7 @@
 # Import functions.py as cost
 import functions as cost
 
-def consoleCalc():
-    # File Locations
-    itemsFile = r'data/items.json'
-    durabFile = r'data/rustlabsDurabilityData.json'
+def console_calc():
 
     # Inputs
     input1 = input("What do you want to raid? ")
@@ -14,11 +11,11 @@ def consoleCalc():
 
     # Print the output of the function (pretty self explanatory)
     if input2 == 'B':
-        print(cost.findDurability('building', input1, input3))
+        print(cost.find_durability('building', input1, input3))
     elif input2 == 'V':
-        print(cost.findDurability('vehicle', input1, input3))
+        print(cost.find_durability('vehicle', input1, input3))
     elif input2 == 'D':
-        print(cost.findDurability('deployable', input1, input3))
+        print(cost.find_durability('deployable', input1, input3))
         
 if __name__ == "__main__":
-    consoleCalc()
+    console_calc()

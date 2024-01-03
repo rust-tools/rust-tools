@@ -2,15 +2,14 @@ import json
 
 def find_id(
         file_path = r'data/items.json',
-        search_term=None, 
+        search_term=None,
         search_by_id=False):
     """
     Finds the ID of an item based on the name or shortname of the item.
-    If search_by_id is set to True,
-    it will search by ID instead of name.
+    If search_by_id is set to True, it will search by ID instead of name.
 
     Parameters:
-    filePath (str): The path to the file containing the item data.
+    file_path (str): The path to the file containing the item data.
     search_term (str): The name or ID of the item to search for.
     search_by_id (bool): If True, will search by ID instead of name.
 
@@ -25,19 +24,25 @@ def find_id(
     with open(file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)  
 
-    # Loop through the dictionary and return the ID,
-    # if the search term matches the name or shortname of the item
-    # If search_by_id is True, it will search by ID instead of name
-    # If no match is found, it will return:
-    # "Not a valid item name or id."   
+    # Loop through the dictionary and 
+    # return the ID if the search term matches 
+    # the name or shortname of the item
+    # If search_by_id is True, 
+    # it will search by ID instead of name
+    # If no match is found, 
+    # it will return "Not a valid item name or id."   
     for id, info in data.items():
         if search_by_id:
             if id.lower() == search_term:
                 return info['name']
-        elif info['name'].lower() == search_term:
-            return id
-        elif info['shortname'] == search_term:
+            
+        else:
+            search_term = search_term.lower() 
+            if info['name'].lower() == search_term:
                 return id
+            elif info['shortname'].lower() == search_term:
+                    return id
+                       
     return "Not a valid item name or id."
 
 
@@ -48,22 +53,22 @@ def find_durability(
         durab_file: str = r'data/rustlabsDurabilityData.json'):
     """
 
-    Finds the durability of an item based on the name,
-    shortname or ID of the item.
+    Finds the durability of an item based on the name, shortname or ID of the item.
 
     Parameters:
     durab_file (str): 
     The path to the file containing the durability data.
 
     item_type (str): 
-    The type of item to search for. Valid options are:
-    'deployable', 'vehicle' and 'building'.
+    The type of item to search for. 
+    Valid options are 'deployable', 'vehicle' and 'building'.
 
     item_name (str): 
     The name, shortname or ID of the item to search for.
+
     raid_type (str): 
-    The type of raid to search for. Valid options are:
-    'eco' and 'explo'.
+    The type of raid to search for. 
+    Valid options are 'eco' and 'explo'.
 
     Returns:
     "Invalid Raid Type" (str): 
@@ -72,16 +77,13 @@ def find_durability(
     "Invalid Item Type" (str): 
     If the item type is not valid.
 
-    f"Trying to {raid_type}raid: {item_name}
-    \nBest option to {raid_type}raid: {key}
-    \nCost: {value[-1]} sulfur
-    \nTime to raid: {value[3]}
-    \nQuantity needed: {value[1]}" (str): 
-    If the raid type is 'explo'.
-
-    f"Trying to {raid_type}raid: {item_name}\n
-    Best option to {raid_type}raid: {key}\n
-    Time to {raid_type}raid: {value[3]}\n
+    f"Trying to {raid_type}raid: {item_name}<br>
+    Best option to {raid_type}raid: {key}<br>
+    Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>
+    Quantity needed: {value[1]}" (str): If the raid type is 'explo'.
+    f"Trying to {raid_type}raid: {item_name}<br>
+    Best option to {raid_type}raid: {key}<br>
+    Time to {raid_type}raid: {value[3]}<br>
     Quantity needed: {value[1]}" (str): 
     If the raid type is 'eco'.
 
@@ -111,17 +113,17 @@ def find_durability(
         search_term = find_id(items_file, item_name)
         return_name = find_id(items_file, search_term, True)
     # If the item type is vehicle or building, search by name
-    elif item_type == 'vehicle' or 'building':
-        search_term = item_name
+    elif item_type == 'vehicle' or item_type == 'building':
+        search_term = item_name.lower()
         return_name = item_name
 
     # Lots of for loops thx rustlabs
-    # Loop through the dictionary and return the ID 
-    # if the search term matches
+    # Loop through the dictionary and return
+    # the ID if the search term matches
     # the name or shortname of the item
     for info in data.values():
         for item, dictionary in info.items():
-            if search_term == item:
+            if search_term.lower() == item.lower():
                 for i in dictionary:
                     for key,value in i.items():
                         if key == "group":
@@ -157,6 +159,10 @@ def find_durability(
     for i in dellist:
         del dict_[i]
 
+    if item_type != 'vehicle':
+        if 'Homing Missile' in dict_.keys():
+            del dict_['Homing Missile']
+
     # If the raid type is explo, 
     # find the cheapest (sulfur) item to raid with
     if raid_type == 'explo':
@@ -168,8 +174,7 @@ def find_durability(
         # Return the cheapest item to raid with
         for key, value in dict_.items():
             if value[-1] == cheapest:
-                return 
-            f"Trying to {raid_type}raid: {return_name}\nBest option to {raid_type}raid: {key}\nCost: {value[-1]} sulfur\nTime to raid: {value[3]}\nQuantity needed: {value[1]}"
+                return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
     
     # If the raid type is eco, 
     # find the cheapest (time) item to raid with
@@ -181,8 +186,45 @@ def find_durability(
         # Return the cheapest item to raid with
         for key,value in dict_.items():
             if value[2] == cheapest:
-                return f"Trying to {raid_type}raid: {return_name}\nBest option to {raid_type}raid: {key}\nTime to {raid_type}raid: {value[3]}\nQuantity needed: {value[1]}"
+                return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Time to {raid_type}raid: {value[3]}<br>Quantity needed: {value[1]}"
+            
+def find_recycle_output(
+        item_name: str, 
+        recycle_file: str = r'data/rustlabsRecycleData.json'):
+    """
+    
+    Finds the output of recycling an item based on the name, 
+    shortname or ID of the item.
+
+    Parameters:
+    recycle_file (str):
+    The path to the file containing the recycle data.
+
+    item_name (str):
+    The name, shortname or ID of the item to search for.
+
+    Returns:
+    f"{quantity} {recycleOutput} with a {probability} probability." (str):
+    If the item is found.
+
+    "Not a valid item name or id." (str):
+    If the item is not found.
+
+    """
+    global items_file
+    with open(recycle_file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    for Id,data_list in data.items():
+        x = find_id(items_file, Id, True)
+        if item_name.lower() == x.lower():
+            for dictionary in data_list:
+                recycle_output = find_id(items_file, dictionary['id'], True)
+                probability = dictionary['probability']
+                probability = "{:.0%}".format(probability)
+                quantity = dictionary['quantity']
+                yield f"{quantity} {recycle_output} with a {probability} probability."
             
 # File Locations
 items_file = r'data/items.json'
 durab_file = r'data/rustlabsDurabilityData.json'
+recycle_file = r'data/rustlabsRecycleData.json'
