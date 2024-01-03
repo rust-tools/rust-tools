@@ -140,7 +140,6 @@
 }
 
 .submitBtn:hover {
-    background-image: url("img/boom.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

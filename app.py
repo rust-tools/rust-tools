@@ -1,19 +1,19 @@
 from flask import Flask, render_template, session, request
 import os
-
-import pythonFunctions
-from appSettings import useLegacy, debugMode
+import python_functions
+from app_settings import use_legacy, debug_mode
 
 # Declare proper settings
-if useLegacy:
+if use_legacy:
     print("[CONSOLE] Using legacy UI")
     use_template = "index_legacy.html"
-elif useLegacy == False:
+elif use_legacy == False:
     print("[CONSOLE] Using new UI")
     use_template = "index.html"
 
 # Declares the app variable to start the webapp
 app = Flask(__name__)
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -24,20 +24,36 @@ def page_not_found(e):
 def raidTool():
     if request.method == 'POST':
         input_data = request.form.get('getId')
-        raidType = request.form.get('raidType')
-        itemType = request.form.get('itemType')
-        print(f"[CONSOLE] Itemtype: {itemType}, input: {input_data}, raidtype: {raidType}")
-        result = pythonFunctions.findDurability(itemType, input_data, raidType)
-        return render_template('raidtool.html', result=result)
-    return render_template('raidtool.html', result="Waiting for input...")
+        raid_type = request.form.get('raidType')
+        item_type = request.form.get('itemType')
+        print(f"[CONSOLE] Itemtype: {item_type}, input: {input_data}, raidtype: {raid_type}")
+        result = python_functions.findDurability(item_type, 
+                                                input_data, 
+                                                raid_type)
+        return render_template(
+            'raidtool.html',
+            result=result)
+    return render_template(
+        'raidtool.html', 
+        result="Waiting for input...")
 
-@app.route('/recycletool', methods=['GET', 'POST'])
+@app.route(
+        '/recycletool', 
+        methods=['GET', 'POST'])
 def recycleTool():
     if request.method == 'POST':
         input_item = request.form.get('getItem')
-        result = list(pythonFunctions.findRecycleOutput(input_item))
-        return render_template('recycletool.html', range = range(len(result)), result=result, item = f'Trying to recycle: {input_item}')
-    return render_template('recycletool.html', result="Waiting for input...", range = range(0), item = "Waiting for input...")
+        result = list(python_functions.findRecycleOutput(input_item))
+        return render_template(
+            'recycletool.html', 
+            range = range(len(result)), 
+            result=result, 
+            item = f'Trying to recycle: {input_item}')
+    return render_template(
+        'recycletool.html', 
+        result="Waiting for input...", 
+        range = range(0), 
+        item = "Waiting for input...")
 
 @app.route('/')
 def index():
@@ -59,4 +75,4 @@ def devPage():
 # Runs the app
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=debugMode)
+    app.run(host='0.0.0.0', port=port, debug=debug_mode)
