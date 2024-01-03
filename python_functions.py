@@ -49,7 +49,8 @@ def find_id(
 def find_durability(
         item_type: str, 
         item_name: str, 
-        raid_type: str = 'explo', 
+        raid_type: str = 'explo',
+        raid_tool: str = None, 
         durab_file: str = r'data/rustlabsDurabilityData.json'):
     """
 
@@ -97,6 +98,7 @@ def find_durability(
     dict_ = {}
     list_ = []
     dellist = []
+    
 
     # Open the file and load the data into a dictionary
     with open(durab_file, 'r', encoding='utf-8') as f:
@@ -163,6 +165,15 @@ def find_durability(
         if 'Homing Missile' in dict_.keys():
             del dict_['Homing Missile']
 
+    if raid_tool is not None:
+        dellist = []
+        for key in dict_.keys():
+            if key.lower() != raid_tool:
+                dellist.append(key)
+        for i in dellist:
+            del dict_[i]
+    # FIXME Return string is not correct ('Best option to explo raid: ...')
+               
     # If the raid type is explo, 
     # find the cheapest (sulfur) item to raid with
     if raid_type == 'explo':
@@ -228,3 +239,6 @@ def find_recycle_output(
 items_file = r'data/items.json'
 durab_file = r'data/rustlabsDurabilityData.json'
 recycle_file = r'data/rustlabsRecycleData.json'
+
+
+print(find_durability('deployable', 'large water catcher', 'explo', 'timed explosive charge'))
