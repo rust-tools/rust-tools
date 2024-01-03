@@ -1,8 +1,6 @@
+from flask import Flask, render_template, session, request
 import os
 import python_functions
-from flask import Flask, render_template, session, request
-from flask_login import LoginManager, UserMixin
-from flask_login import login_required, login_user, logout_user
 from app_settings import use_legacy, debug_mode
 
 # Declare proper settings
@@ -15,9 +13,6 @@ elif use_legacy == False:
 
 # Declares the app variable to start the webapp
 app = Flask(__name__)
-
-login_manager = LoginManager()
-login_manager.init_app(app)
 
 # Renders the index.html page with the result variable. 
 # If the request method is POST, it will run the 
@@ -72,9 +67,6 @@ def homePage():
 def errorPage():
     return render_template('pageNotFound.html')
 
-@app.route('/login')
-def loginPage():
-    return render_template('loginPage.html')
 
 # Runs the app
 if __name__ == "__main__":
