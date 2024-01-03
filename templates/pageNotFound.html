@@ -34,8 +34,10 @@
     <button class="openBtn" onclick="openNav()">&#9776;</button>
     <div class="wrapper">
         <div class="main">
-            <h1 align="center" id="header">&lt;404: Page Not Found></h1>
-            <p align="center" id="subHeader">It seems this page is either offline, or doesn't exist :/</p>
+            <h1 align="center" id="header">&lt;pageNotFound></h1>
+            <p align="center" id="subHeader">It seems this page is either offline,</p>
+            <p align="center" id="subHeader">or it doesn't exist :/</p>
+            <p align="center" id="subHeader">Error code: {{ errorCode }}</p>
             <button align="center" class="mainBtn" onclick="location.href='home'">BACK HOME</button>
         </div>
     </div>
