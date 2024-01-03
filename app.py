@@ -15,6 +15,10 @@ elif useLegacy == False:
 # Declares the app variable to start the webapp
 app = Flask(__name__)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('pageNotFound.html', errorCode="404"), 404
+
 # Renders the index.html page with the result variable. If the request method is POST, it will run the pythonFunctions.findDurability function and return the result to the index.html page
 @app.route('/raidtool', methods=['GET', 'POST']) 
 def raidTool():
