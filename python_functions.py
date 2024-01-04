@@ -168,11 +168,14 @@ def find_durability(
     if raid_tool is not None:
         dellist = []
         for key in dict_.keys():
-            if key.lower() != raid_tool:
+            print(key)
+            if key.lower() != raid_tool.lower():
+                print(key.lower() == raid_tool.lower())
                 dellist.append(key)
         for i in dellist:
             del dict_[i]
-    # FIXME Return string is not correct ('Best option to explo raid: ...')
+        if len(dict_) == 0:
+            return "Invalid Raid Tool"
                
     # If the raid type is explo, 
     # find the cheapest (sulfur) item to raid with
@@ -181,11 +184,13 @@ def find_durability(
             if value[-1] != None:
                 if value[-1] < cheapest:
                     cheapest = value[-1] 
-
-        # Return the cheapest item to raid with
-        for key, value in dict_.items():
-            if value[-1] == cheapest:
-                return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
+        if raid_tool is None:
+            # Return the cheapest item to raid with
+            for key, value in dict_.items():
+                if value[-1] == cheapest:
+                    return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
+        elif raid_tool is not None:
+            return f"Trying to {raid_type}raid: {return_name}<br>Chosen option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
     
     # If the raid type is eco, 
     # find the cheapest (time) item to raid with
@@ -194,10 +199,13 @@ def find_durability(
             if value[2] != None:
                 if value[2] < cheapest:
                     cheapest = value[2]
+        if raid_tool is None:
         # Return the cheapest item to raid with
-        for key,value in dict_.items():
-            if value[2] == cheapest:
-                return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Time to {raid_type}raid: {value[3]}<br>Quantity needed: {value[1]}"
+            for key,value in dict_.items():
+                if value[2] == cheapest:
+                    return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Time to {raid_type}raid: {value[3]}<br>Quantity needed: {value[1]}"
+        elif raid_tool is not None:
+            return f"Trying to {raid_type}raid: {return_name}<br>Chosen option to {raid_type}raid: {key}<br>Time to {raid_type}raid: {value[3]}<br>Quantity needed: {value[1]}"
             
 def find_recycle_output(
         item_name: str, 
@@ -241,4 +249,4 @@ durab_file = r'data/rustlabsDurabilityData.json'
 recycle_file = r'data/rustlabsRecycleData.json'
 
 
-print(find_durability('deployable', 'large water catcher', 'explo', 'timed explosive charge'))
+print(find_durability('deployable', 'large water catcher', 'eco', 'Jackhammer'))
