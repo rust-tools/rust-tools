@@ -27,7 +27,7 @@ def raidTool():
         raid_type = request.form.get('raidType')
         item_type = request.form.get('itemType')
         print(f"[CONSOLE] Itemtype: {item_type}, input: {input_data}, raidtype: {raid_type}")
-        result = python_functions.findDurability(item_type, 
+        result = python_functions.find_durability(item_type, 
                                                 input_data, 
                                                 raid_type)
         return render_template(
@@ -43,7 +43,7 @@ def raidTool():
 def recycleTool():
     if request.method == 'POST':
         input_item = request.form.get('getItem')
-        result = list(python_functions.findRecycleOutput(input_item))
+        result = list(python_functions.find_recycle_output(input_item))
         return render_template(
             'recycletool.html', 
             range = range(len(result)), 
