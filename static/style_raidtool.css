@@ -127,7 +127,7 @@
     border-radius: 10px;
     border: none;
     background-color: var(--cBlue);
-    color: white;
+    color: var(--cWhite);
     font-size: 30px;
     margin: 0%;
     font-family: baseFont;
@@ -136,14 +136,8 @@
 }
 
 .submitBtn:hover {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: var(--cBlue);
+    background-color: #1b65ef;
     cursor: pointer;
-    border: 2px solid var(--cBlack);
-    background-size: 160%;
-    color: var(--cBlack);
 }
 
 .dropDowns {
