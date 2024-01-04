@@ -231,6 +231,3 @@ def find_recycle_output(
 items_file = r'data/items.json'
 durab_file = r'data/rustlabsDurabilityData.json'
 recycle_file = r'data/rustlabsRecycleData.json'
-
-
-print(find_durability('vehicle', 'Minicopter', 'explo'))
