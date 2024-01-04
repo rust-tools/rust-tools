@@ -159,7 +159,10 @@ def find_durability(
     for i in dellist:
         del dict_[i]
 
-    if item_type != 'vehicle':
+    homing_list = ['Minicopter', 'Scrap Transport Helicopter', 'Attack Helicopter', 'Hot Air Balloon']
+
+    # Remove Homing Missile if the item is not an airborn vehicle.
+    if item_name.lower() not in homing_list:
         if 'Homing Missile' in dict_.keys():
             del dict_['Homing Missile']
 
