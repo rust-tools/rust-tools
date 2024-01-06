@@ -15,11 +15,12 @@ elif use_legacy == False:
 app = Flask(__name__)
 
 
+# Error handling, if page is not found, render 404 page.
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('pageNotFound.html', errorCode="404"), 404
 
-# Renders the index.html page with the result variable. If the request method is POST, it will run the pythonFunctions.findDurability function and return the result to the index.html page
+# Renders the raidtool.html page with the result variable. If the request method is POST, it will run the pythonFunctions.findDurability function and return the result to the raidtool.html page
 @app.route('/raidtool', methods=['GET', 'POST']) 
 def raidTool():
     if request.method == 'POST':
@@ -37,6 +38,7 @@ def raidTool():
         'raidtool.html', 
         result="Waiting for input...")
 
+# Renders the recycletool.html page with the input_item variable. If the request method is POST, it will run the pythonFunctions.findRecycleOutput function and return the result to the recycletool.html page
 @app.route(
         '/recycletool', 
         methods=['GET', 'POST'])
@@ -55,18 +57,22 @@ def recycleTool():
         range = range(0), 
         item = "Waiting for input...")
 
+# Renders the index.html page
 @app.route('/')
 def index():
     return render_template(use_template)
 
+# Renders the home.html page
 @app.route('/home')
 def homePage():
     return render_template(use_template)
 
+# Renders the pageNotFound.html page
 @app.route('/404')
 def errorPage():
     return render_template('pageNotFound.html')
 
+# Renders the devPage.html page
 @app.route('/in-development')
 def devPage():
     return render_template('devPage.html')
