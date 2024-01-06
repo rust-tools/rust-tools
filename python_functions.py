@@ -81,6 +81,7 @@ def find_durability(
     Best option to {raid_type}raid: {key}<br>
     Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>
     Quantity needed: {value[1]}" (str): If the raid type is 'explo'.
+
     f"Trying to {raid_type}raid: {item_name}<br>
     Best option to {raid_type}raid: {key}<br>
     Time to {raid_type}raid: {value[3]}<br>
