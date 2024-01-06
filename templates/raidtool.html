@@ -53,6 +53,16 @@
                     <option value="building">Building</option>
                 </select>
 
+                <!-- <select name="raidTool" id="raidTool" class="dropDowns">
+                    <option value="None">Best Option (Default)</option>
+                    <option value="satchel charge">Satchel</option>
+                    <option value="beancan grenade">Beancan</option>
+                    <option value="rocket">Rocket</option>
+                    <option value="timed explosive charge">C4</option>
+                    <option value="explosive 5.56 rifle ammo">Explosive 5.56</option>
+                </select> -->
+                
+
                 <!-- The big input box, contains the item that gets sent to the calculator -->
                 <input 
                     type="text" 
@@ -67,6 +77,7 @@
                     <option value="{{ item }}">
                     {% endfor %}
                 </datalist>
+                    
 
                 <!-- Button that submits the input to the pythonFunctions.py file -->
                 <button type="submit" id="idSubmit" class="submitBtn" value="Submit">BOOM!</button>

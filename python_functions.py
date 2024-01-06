@@ -249,4 +249,5 @@ durab_file = r'data/rustlabsDurabilityData.json'
 recycle_file = r'data/rustlabsRecycleData.json'
 
 
-print(find_durability('deployable', 'large water catcher', 'eco', 'Jackhammer'))
+# print(find_durability('deployable', 'large water catcher', 'eco', 'Jackhammer'))
+print(find_id(items_file, 'beancan grenade'))
