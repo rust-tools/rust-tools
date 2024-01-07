@@ -82,6 +82,7 @@ def find_durability(
     Best option to {raid_type}raid: {key}<br>
     Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>
     Quantity needed: {value[1]}" (str): If the raid type is 'explo'.
+
     f"Trying to {raid_type}raid: {item_name}<br>
     Best option to {raid_type}raid: {key}<br>
     Time to {raid_type}raid: {value[3]}<br>
@@ -161,7 +162,10 @@ def find_durability(
     for i in dellist:
         del dict_[i]
 
-    if item_type != 'vehicle':
+    homing_list = ['Minicopter', 'Scrap Transport Helicopter', 'Attack Helicopter', 'Hot Air Balloon']
+
+    # Remove Homing Missile if the item is not an airborn vehicle.
+    if item_name.lower() not in homing_list:
         if 'Homing Missile' in dict_.keys():
             del dict_['Homing Missile']
 
@@ -246,8 +250,6 @@ def find_recycle_output(
 # File Locations
 items_file = r'data/items.json'
 durab_file = r'data/rustlabsDurabilityData.json'
+
 recycle_file = r'data/rustlabsRecycleData.json'
 
-
-# print(find_durability('deployable', 'large water catcher', 'eco', 'Jackhammer'))
-print(find_id(items_file, 'beancan grenade'))
