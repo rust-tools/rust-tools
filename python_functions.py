@@ -49,7 +49,8 @@ def find_id(
 def find_durability(
         item_type: str, 
         item_name: str, 
-        raid_type: str = 'explo', 
+        raid_type: str = 'explo',
+        raid_tool: str = None, 
         durab_file: str = r'data/rustlabsDurabilityData.json'):
     """
 
@@ -98,6 +99,7 @@ def find_durability(
     dict_ = {}
     list_ = []
     dellist = []
+    
 
     # Open the file and load the data into a dictionary
     with open(durab_file, 'r', encoding='utf-8') as f:
@@ -167,6 +169,18 @@ def find_durability(
         if 'Homing Missile' in dict_.keys():
             del dict_['Homing Missile']
 
+    if raid_tool is not None:
+        dellist = []
+        for key in dict_.keys():
+            print(key)
+            if key.lower() != raid_tool.lower():
+                print(key.lower() == raid_tool.lower())
+                dellist.append(key)
+        for i in dellist:
+            del dict_[i]
+        if len(dict_) == 0:
+            return "Invalid Raid Tool"
+               
     # If the raid type is explo, 
     # find the cheapest (sulfur) item to raid with
     if raid_type == 'explo':
@@ -174,11 +188,13 @@ def find_durability(
             if value[-1] != None:
                 if value[-1] < cheapest:
                     cheapest = value[-1] 
-
-        # Return the cheapest item to raid with
-        for key, value in dict_.items():
-            if value[-1] == cheapest:
-                return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
+        if raid_tool is None:
+            # Return the cheapest item to raid with
+            for key, value in dict_.items():
+                if value[-1] == cheapest:
+                    return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
+        elif raid_tool is not None:
+            return f"Trying to {raid_type}raid: {return_name}<br>Chosen option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
     
     # If the raid type is eco, 
     # find the cheapest (time) item to raid with
@@ -187,10 +203,13 @@ def find_durability(
             if value[2] != None:
                 if value[2] < cheapest:
                     cheapest = value[2]
+        if raid_tool is None:
         # Return the cheapest item to raid with
-        for key,value in dict_.items():
-            if value[2] == cheapest:
-                return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Time to {raid_type}raid: {value[3]}<br>Quantity needed: {value[1]}"
+            for key,value in dict_.items():
+                if value[2] == cheapest:
+                    return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Time to {raid_type}raid: {value[3]}<br>Quantity needed: {value[1]}"
+        elif raid_tool is not None:
+            return f"Trying to {raid_type}raid: {return_name}<br>Chosen option to {raid_type}raid: {key}<br>Time to {raid_type}raid: {value[3]}<br>Quantity needed: {value[1]}"
             
 def find_recycle_output(
         item_name: str, 
@@ -231,4 +250,6 @@ def find_recycle_output(
 # File Locations
 items_file = r'data/items.json'
 durab_file = r'data/rustlabsDurabilityData.json'
+
 recycle_file = r'data/rustlabsRecycleData.json'
+

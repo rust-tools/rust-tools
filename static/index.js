@@ -13,13 +13,16 @@ function openNav() {
 // JavaScript code to save the selected options in the dropdown menus, so that they are still selected when the page is refreshed.
 window.onload = function() {
     // Check if there are saved selections
-    var raidType = localStorage.getItem('raidType');
+    var raidType = localStorage.getItem('switch');
     var itemType = localStorage.getItem('itemType');
 
-    if (document.getElementById('raidType').value === 'explo') {
+    if (document.getElementById('switch').checked === false) {
         document.getElementById('idSubmit').innerHTML = 'BOOM!';
-    } else if (document.getElementById('raidType').value === 'eco') {
+        raidTool.disabled = this.checked;
+    } else if (document.getElementById('switch').checked === true) {
         document.getElementById('idSubmit').innerHTML = 'CHOP!';
+        raidTool.disabled = this.checked;
+        raidTool.value = 'None';
     }
 
     // If there are, set the selected options
@@ -31,38 +34,28 @@ window.onload = function() {
     }
 
     // When an option is selected, save the selection
-    document.getElementById('raidType').onchange = function() {
-        localStorage.setItem('raidType', this.value);
+    document.getElementById('switch').onchange = function() {
+        localStorage.setItem('switch', this.value);
     }
     document.getElementById('itemType').onchange = function() {
         localStorage.setItem('itemType', this.value);
     }
 
 
-    document.getElementById('raidType').onchange = function() {
+    document.getElementById('switch').onchange = function() {
         var submitButton = document.getElementById('idSubmit');
         var submitBtn = document.querySelector('.submitBtn');
-        var raidType = this.value;
+        var raidType = this;
+        var raidTool = document.getElementById('raidTool');
+        raidTool.disabled = this.checked;
 
-        if (raidType === 'explo') {
+        if (raidType.checked === false) {
             submitButton.innerHTML = 'BOOM!';
-            changeHoverBackground('static/img/boom.png', '160%', 'darkred');
-        } else if (raidType === 'eco') {
+        } else if (raidType.checked === true) {
             submitButton.innerHTML = 'CHOP!';
-            changeHoverBackground('static/img/Hatchet_icon.png', '60%', 'white');
+            raidTool.value = 'None';
         }
     
-    }
-    function changeHoverBackground(imageUrl, styleSize, styleColor) {
-        var style = document.createElement('style');
-        style.innerHTML = `
-            .submitBtn:hover {
-                background-image: url('${imageUrl}');
-                background-size: ${styleSize};
-                color: ${styleColor};
-            }
-        `;
-        document.head.appendChild(style);
     }
 }
 

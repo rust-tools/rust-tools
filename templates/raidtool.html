@@ -39,12 +39,19 @@
             <h1 align="center" id="header">Raid Tool</h1>
             <form align="center" method="POST">
                 <!-- Input elements: dropdown menus, input box, and submit button. -->
+                
+                <div class="container" align="center">
+                    <p id="jut-left">Explo</p>
+                    <input type="checkbox" id="switch" class="checkbox" name="switch" />
+                    <label for="switch" class="toggle">
+                        <p></p>
+                    </label>
+                    <p id="jut-right">Eco</p>
 
-                <select name="raidType" id="raidType" class="dropDowns">
-                    <!-- Raidtype dropdown menu -->
-                    <option value="explo">Explosive Raid</option>
-                    <option value="eco">Eco Raid</option>
-                </select>
+                </div>
+
+                <br>
+
 
                 <select name="itemType" id="itemType" class="dropDowns">
                     <!-- Itemtype dropdown menu -->
@@ -52,6 +59,16 @@
                     <option value="vehicle">Vehicle</option>
                     <option value="building">Building</option>
                 </select>
+
+                <select name="raidTool" id="raidTool" class="dropDowns" disabled>
+                    <option value="None">Best Option (Default)</option>
+                    <option value="satchel charge">Satchel Charge</option>
+                    <option value="beancan grenade">Beancan Grenade</option>
+                    <option value="rocket">Rocket</option>
+                    <option value="timed explosive charge">Timed Explosive Charge</option>
+                    <option value="explosive 5.56 rifle ammo">Explosive 5.56 Rifle Ammo</option>
+                </select>
+                
 
                 <!-- The big input box, contains the item that gets sent to the calculator -->
                 <input 
@@ -67,6 +84,7 @@
                     <option value="{{ item }}">
                     {% endfor %}
                 </datalist>
+                    
 
                 <!-- Button that submits the input to the pythonFunctions.py file -->
                 <button type="submit" id="idSubmit" class="submitBtn" value="Submit">BOOM!</button>
