@@ -218,6 +218,13 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+#switch {
+  margin-left: auto;
+  margin-right: auto;
+  justify-items: center;
+  text-align: center;
+}
+
 #jut-left {
   text-align: right;
 }
