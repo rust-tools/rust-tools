@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- Commenting an HTML file feels weird, is it conventionally done? -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <link href="{{ url_for('static', filename='style_homepage.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <script>
+        // These variables are used in the index.js file, and are used to get the JSON files that contain the item names.
+        var deployableSuggestsUrl = "{{ url_for('static', filename='deployableSuggests.json') }}";
+        var vehicleSuggestsUrl = "{{ url_for('static', filename='vehicleSuggests.json') }}";
+        var buildingSuggestsUrl = "{{ url_for('static', filename='buildingSuggests.json') }}";
+    </script>
+    <script src="{{ url_for('static', filename='index.js') }}" defer></script> <!-- Main script for the page -->
+    <title>Rust Tools</title>
+</head>
+
+<body>
+    <div id="sidePanel" class="clsSidePanel">
+        <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&timesbar;</a>
+        <div class="sidePanelTop">
+            <a href="home">home</a>
+            <a href="raidtool">raidTool</a>
+            <a href="recycletool">recycleTool</a>
+            <a href="in-development">help</a>
+            <a href="in-development">about</a>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=98H3AK3BD3D9L" target="_blank">donate</a>
+        </div>
+        <div class="sidePanelBottom">
+            
+        </div>
+    </div>
+      
+    <button class="openBtn" onclick="openNav()">&#9776;</button>
+    
+
+    <div class="wrapper">
+        <div class="toolboxes" id="raidTool">
+            <h1 align="center" id="header">&lt;raidTool></h1>
+            <p align="center" id="subHeader">Need to calculate what it</p>
+            <p align="center" id="subHeader">costs to raid something?</p>
+            <button align="center" class="mainBtn" onclick="location.href='raidtool'">USE</button>
+        </div>
+        <div class="toolboxes" id="recycleTool">
+            <h1 align="center" id="header">&lt;recycleTool></h1>
+            <p align="center" id="subHeader">Need to calculate what it</p>
+            <p align="center" id="subHeader">gives to recycle something?</p>
+            <button align="center" class="mainBtn" onclick="location.href='recycletool'">USE</button>
+        </div>
+</body>
+</html>
