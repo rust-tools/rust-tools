@@ -166,3 +166,10 @@
   margin-top: 5%;
   width: 100%;
 }
+
+#homeBtn {
+  background: none;
+  border: none;
+  color: var(--cWhite);
+  text-decoration: underline;
+}

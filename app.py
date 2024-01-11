@@ -75,7 +75,7 @@ def index():
 # Renders the home.html page
 @app.route('/home')
 def homePage():
-    return render_template(use_template)
+    return render_template('homePage.html')
 
 # Renders the pageNotFound.html page
 @app.route('/404')
