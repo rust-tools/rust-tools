@@ -97,7 +97,7 @@ def find_durability(
     global items_file
     cheapest = float('inf')
     dict_ = {}
-    list_ = []
+    list_ = {}
     dellist = []
     
 
@@ -130,19 +130,25 @@ def find_durability(
                 for i in dictionary:
                     for key,value in i.items():
                         if key == "group":
-                            list_.append(value)
+                            # list_.append(value)
+                            list_['Group'] = value
                         if key == "toolId":
                             raidTool = find_id(items_file, value, True)
                         elif key == "quantity":
-                            list_.append(value)
+                            list_['Amount'] = value
+                            # list_.append(value)
                         elif key == "time":
-                            list_.append(value)
+                            list_['Time'] = value
+                            # list_.append(value)
                         elif key == "timeString":
-                            list_.append(value)
+                            list_['TimeString'] = value
+                            # list_.append(value)
                         elif key == "fuel":
-                            list_.append(value)
+                            list_['Lowgrade'] = value
+                            # list_.append(value)
                         elif key == "sulfur":
-                            list_.append(value)
+                            list_['Sulfur'] = value
+                            # list_.append(value)
                     dict_[raidTool] = list_
                     list_ = []
 
@@ -172,15 +178,14 @@ def find_durability(
     if raid_tool is not None:
         dellist = []
         for key in dict_.keys():
-            print(key)
             if key.lower() != raid_tool.lower():
-                print(key.lower() == raid_tool.lower())
                 dellist.append(key)
         for i in dellist:
             del dict_[i]
         if len(dict_) == 0:
             return "Invalid Raid Tool"
-               
+
+    #FIXME raid with molotov will output none sulfur, possible fix, if sulfur == none, print 0 or lowgrade          
     # If the raid type is explo, 
     # find the cheapest (sulfur) item to raid with
     if raid_type == 'explo':
@@ -192,8 +197,10 @@ def find_durability(
             # Return the cheapest item to raid with
             for key, value in dict_.items():
                 if value[-1] == cheapest:
+                    
                     return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
         elif raid_tool is not None:
+            return (key, value)
             return f"Trying to {raid_type}raid: {return_name}<br>Chosen option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
     
     # If the raid type is eco, 
