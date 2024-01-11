@@ -149,13 +149,13 @@ def find_durability(
     # If the raid type is eco, remove all items that are not melee
     if raid_type == 'eco':
         for key,value in dict_.items():
-            if value[0] != 'melee':
+            if value[0][1] != 'melee':
                 dellist.append(key)
     # If the raid type is explo, 
     # remove all items that are not explosive
     elif raid_type == 'explo':
         for key,value in dict_.items():
-            if value[0] != 'explosive':
+            if value[0][1] != 'explosive':
                 dellist.append(key)
 
     # Delete the items that are not melee or explosive
@@ -184,30 +184,34 @@ def find_durability(
     # find the cheapest (sulfur) item to raid with
     if raid_type == 'explo':
         for key, value in dict_.items():
-            if value[-1] != None:
-                if value[-1] < cheapest:
-                    cheapest = value[-1] 
+            if value[-1][1] != None:
+                if value[-1][1] < cheapest:
+                    cheapest = value[-1][1]
+        print(cheapest)
+        if cheapest == None:
+            cheapest = float('inf')
+            # print('Cheapest is None') 
         if raid_tool is None:
             # Return the cheapest item to raid with
             for key, value in dict_.items():
-                if value[-1] == cheapest:
+                if value[-1][1] == cheapest:
                     
                     return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
         elif raid_tool is not None:
-            return (key, value)
+            # return (key, value)
             return f"Trying to {raid_type}raid: {return_name}<br>Chosen option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
     
     # If the raid type is eco, 
     # find the cheapest (time) item to raid with
     elif raid_type == 'eco':
         for key, value in dict_.items():
-            if value[2] != None:
-                if value[2] < cheapest:
-                    cheapest = value[2]
+            if value[2][1] != None:
+                if value[2][1] < cheapest:
+                    cheapest = value[2][1]
         if raid_tool is None:
         # Return the cheapest item to raid with
             for key,value in dict_.items():
-                if value[2] == cheapest:
+                if value[2][1] == cheapest:
                     return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Time to {raid_type}raid: {value[3]}<br>Quantity needed: {value[1]}"
         elif raid_tool is not None:
             return f"Trying to {raid_type}raid: {return_name}<br>Chosen option to {raid_type}raid: {key}<br>Time to {raid_type}raid: {value[3]}<br>Quantity needed: {value[1]}"
