@@ -97,7 +97,7 @@ def find_durability(
     global items_file
     cheapest = float('inf')
     dict_ = {}
-    list_ = {}
+    list_ = []
     dellist = []
     
 
@@ -130,25 +130,19 @@ def find_durability(
                 for i in dictionary:
                     for key,value in i.items():
                         if key == "group":
-                            # list_.append(value)
-                            list_['Group'] = value
+                            list_.append(('Group',value))
                         if key == "toolId":
                             raidTool = find_id(items_file, value, True)
                         elif key == "quantity":
-                            list_['Amount'] = value
-                            # list_.append(value)
+                            list_.append(('Amount', value))
                         elif key == "time":
-                            list_['Time'] = value
-                            # list_.append(value)
+                            list_.append(('Time', value))
                         elif key == "timeString":
-                            list_['TimeString'] = value
-                            # list_.append(value)
+                            list_.append(('TimeString', value))
                         elif key == "fuel":
-                            list_['Lowgrade'] = value
-                            # list_.append(value)
+                            list_.append(('Lowgrade', value))
                         elif key == "sulfur":
-                            list_['Sulfur'] = value
-                            # list_.append(value)
+                            list_.append(('Sulfur', value))
                     dict_[raidTool] = list_
                     list_ = []
 
