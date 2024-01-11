@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
         <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+        <meta name="robots" content="noindex">
         <script>
             // These variables are used in the index.js file, and are used to get the JSON files that contain the item names.
             var deployableSuggestsUrl = "{{ url_for('static', filename='deployableSuggests.json') }}";
