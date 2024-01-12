@@ -178,28 +178,30 @@ def find_durability(
             del dict_[i]
         if len(dict_) == 0:
             return "Invalid Raid Tool"
-
-    #FIXME raid with molotov will output none sulfur, possible fix, if sulfur == none, print 0 or lowgrade          
+      
     # If the raid type is explo, 
     # find the cheapest (sulfur) item to raid with
+    # if there are no sulfur items to raid with,
+    # find the cheapest lowgrade item to raid with
+    # this will only happen in the case that someone
+    # is trying to raid with molotov or flamethrower
     if raid_type == 'explo':
         for key, value in dict_.items():
             if value[-1][1] != None:
-                if value[-1][1] < cheapest:
-                    cheapest = value[-1][1]
-        print(cheapest)
-        if cheapest == None:
-            cheapest = float('inf')
-            # print('Cheapest is None') 
+                if int(value[-1][1]) < cheapest:
+                    cheapest = value[-1]
+        if cheapest == float('inf'):
+            for key, value in dict_.items():
+                if value[-2][1] is not None:
+                    if int(value[-2][1]) < cheapest:
+                        cheapest = value[-2]
         if raid_tool is None:
             # Return the cheapest item to raid with
             for key, value in dict_.items():
-                if value[-1][1] == cheapest:
-                    
-                    return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
+                if value[-1] or value[-2] is cheapest:
+                    return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Cost: {cheapest[1]} {cheapest[0]}<br>Time to raid: {value[3][1]}<br>Amount needed: {value[1][1]}"
         elif raid_tool is not None:
-            # return (key, value)
-            return f"Trying to {raid_type}raid: {return_name}<br>Chosen option to {raid_type}raid: {key}<br>Cost: {value[-1]} sulfur<br>Time to raid: {value[3]}<br>Quantity needed: {value[1]}"
+            return f"Trying to {raid_type}raid: {return_name}<br>Chosen option to {raid_type}raid: {key}<br>Cost: {cheapest[1]} {cheapest[0]}<br>Time to raid: {value[3][1]}<br>Quantity needed: {value[1][1]}"
     
     # If the raid type is eco, 
     # find the cheapest (time) item to raid with
