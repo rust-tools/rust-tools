@@ -6,6 +6,15 @@
     --cWhite: #F7EBE8;
 }
 
+@keyframes zoom {
+  from {
+      transform: scale(1);
+  }
+  to {
+      transform: scale(1.2);
+  }
+}
+
 @font-face {
     font-family: DMsans;
     src: url('font/DMSANS/static/DMSans-Regular.ttf')
@@ -71,6 +80,11 @@ html {
     margin: 50px;
     margin-top: 10%;
     padding: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.toolboxes:hover {
+  animation: zoom 0.5s forwards;
 }
 .mainBtn {
     opacity: 1;
