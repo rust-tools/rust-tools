@@ -26,7 +26,6 @@ def raidTool():
     if request.method == 'POST':
         input_data = request.form.get('getId')
         raid_type = request.form.get('switch')
-        print(raid_type)
         item_type = request.form.get('itemType')
         raid_tool = request.form.get('raidTool')
         if raid_type == 'on':
@@ -35,7 +34,6 @@ def raidTool():
             raid_type = 'explo'
         if raid_tool == 'None':
             raid_tool = None
-        print(raid_type)
         print(f"[CONSOLE] Itemtype: {item_type}, input: {input_data}, raidtype: {raid_type}")
         result = python_functions.find_durability(item_type, 
                                                 input_data, 
