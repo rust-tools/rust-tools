@@ -99,7 +99,7 @@ def find_durability(
     dict_ = {}
     list_ = []
     dellist = []
-    
+
 
     # Open the file and load the data into a dictionary
     with open(durab_file, 'r', encoding='utf-8') as f:
@@ -189,19 +189,21 @@ def find_durability(
         for key, value in dict_.items():
             if value[-1][1] != None:
                 if int(value[-1][1]) < cheapest:
-                    cheapest = value[-1]
+                    cheapest = value[-1][1]
+                    cheapest_output = value[-1]
         if cheapest == float('inf'):
             for key, value in dict_.items():
                 if value[-2][1] is not None:
                     if int(value[-2][1]) < cheapest:
-                        cheapest = value[-2]
+                        cheapest = value[-2][1]
+                        cheapest_output = value[-2]
         if raid_tool is None:
             # Return the cheapest item to raid with
             for key, value in dict_.items():
                 if value[-1] or value[-2] is cheapest:
-                    return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Cost: {cheapest[1]} {cheapest[0]}<br>Time to raid: {value[3][1]}<br>Amount needed: {value[1][1]}"
+                    return f"Trying to {raid_type}raid: {return_name}<br>Best option to {raid_type}raid: {key}<br>Cost: {cheapest_output[1]} {cheapest_output[0]}<br>Time to raid: {value[3][1]}<br>Amount needed: {value[1][1]}"
         elif raid_tool is not None:
-            return f"Trying to {raid_type}raid: {return_name}<br>Chosen option to {raid_type}raid: {key}<br>Cost: {cheapest[1]} {cheapest[0]}<br>Time to raid: {value[3][1]}<br>Quantity needed: {value[1][1]}"
+            return f"Trying to {raid_type}raid: {return_name}<br>Chosen option to {raid_type}raid: {key}<br>Cost: {cheapest_output[1]} {cheapest_output[0]}<br>Time to raid: {value[3][1]}<br>Quantity needed: {value[1][1]}"
     
     # If the raid type is eco, 
     # find the cheapest (time) item to raid with
