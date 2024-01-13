@@ -15,6 +15,13 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  .toolboxes {
+    width: 100%;
+  }
+
+}
+
 @font-face {
     font-family: DMsans;
     src: url('font/DMSANS/static/DMSans-Regular.ttf')
@@ -74,7 +81,8 @@ html {
 .toolboxes {
     background-color: rgba(245,245,245,0.5);
     border-radius: 10px;
-    width: 500px;
+    max-width: 500px;
+    width: 100%;
     height: fit-content;
     color: var(--cBlack);
     margin: 50px;
