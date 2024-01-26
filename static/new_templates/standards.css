@@ -1,0 +1,52 @@
+:root {
+    --cBrown: #2B241C;
+    --cWhite: #FFFAEA;
+    --cEGray: #262626;
+    --cLGray: #353535;
+    --cDOrange: #bc6c25;
+    --cLOrange: #f49f0a;
+}
+
+@font-face {
+    font-family: DMsans;
+    src: url('/static/font/DMSANS/static/DMSans-Regular.ttf')
+}
+
+@font-face {
+    font-family: DMsans-italic;
+    src: url('/static/font/DMSANS/static/DMSans-SemiBoldItalic.ttf')
+
+}
+
+@font-face {
+    font-family: DMsans-bold;
+    src: url('/static/font/DMSANS/static/DMSans-Bold.ttf')
+}
+
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    width: 100vw;
+    background-color: var(--cEGray);
+}
+
+.button {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    color: var(--cWhite);
+    background-color: var(--cDOrange);
+    font-family: DMsans-bold, sans-serif;
+    padding: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.button:hover {
+    background-color: var(--cLOrange);
+}
