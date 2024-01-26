@@ -56,7 +56,7 @@ body {
     color: var(--cWhite);
     margin: 1vw 1vh;
     padding: 1vw 1vh;
-    font-size: 1.5em;
+    font-size: 1.5vw;
 }
 
 .headerBtn:hover {
@@ -87,7 +87,7 @@ body {
 
 #header {
     font-family: DMsans-italic, sans-serif;
-    font-size: 50px;
+    font-size: 3vw;
     opacity: 1;
     color: var(--cWhite);
     margin-bottom: 3%;
@@ -95,7 +95,7 @@ body {
 
 #subHeader {
     font-family: DMsans, sans-serif;
-    font-size: 20px;
+    font-size: 1.5vw;
     opacity: 1;
     color: var(--cWhite);
 }
@@ -112,6 +112,7 @@ body {
     color: var(--cWhite);
     background-color: var(--cDOrange);
     font-family: DMsans-bold, sans-serif;
+    font-size: 1.3vw;
     padding: 3%;
     padding-left: 5%;
     padding-right: 5%;
