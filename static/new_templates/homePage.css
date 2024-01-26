@@ -1,0 +1,88 @@
+:root {
+    --cBrown: #2B241C;
+    --cWhite: #FFFAEA;
+    --cEGray: #262626;
+    --cLGray: #353535;
+    --cDOrange: #bc6c25;
+    --cLOrange: #f49f0a;
+}
+
+@font-face {
+    font-family: DMsans;
+    src: url('/static/font/DMSANS/static/DMSans-Regular.ttf')
+}
+
+@font-face {
+    font-family: DMsans-italic;
+    src: url('/static/font/DMSANS/static/DMSans-SemiBoldItalic.ttf')
+
+}
+
+@font-face {
+    font-family: DMsans-bold;
+    src: url('/static/font/DMSANS/static/DMSans-Bold.ttf')
+}
+
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    width: 100vw;
+    background-color: var(--cEGray);
+}
+
+/* HEADER */
+
+.header {
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-items: center;
+    background-color: var(--cEGray);
+    border-bottom: solid 1px;
+    border-color: var(--cWhite);
+}
+
+.headerBtn {
+    text-decoration: none;
+    font-family: DMsans, sans-serif;
+    color: var(--cWhite);
+    margin: 1vw 1vh;
+    padding: 1vw 1vh;
+    font-size: 1.5em;
+}
+
+.headerBtn:hover {
+    background-color: #3f3f3f;
+    text-decoration: underline;
+}
+
+#headerImg {
+    height: 10vh;
+    margin-right: 1vh 1vw;
+    padding-bottom: 0.1vh;
+}
+
+/* BODY */
+
+.panels {
+    display: flex;
+    justify-content: start;
+
+}
+
+.toolPanel {
+    width: 15vw;
+    height: 25vh;
+    padding: 5vh 5vw;
+    background-color: var(--cLGray);
+    border: 0px solid;
+    border-radius: 5px;
+}
