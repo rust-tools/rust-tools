@@ -48,6 +48,13 @@ body {
     background-color: var(--cEGray);
     border-bottom: solid 1px;
     border-color: var(--cWhite);
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.header::-webkit-scrollbar {
+    display: none;
 }
 
 .headerBtn {
@@ -56,7 +63,7 @@ body {
     color: var(--cWhite);
     margin: 1vw 1vh;
     padding: 1vw 1vh;
-    font-size: 1.5em;
+    font-size: clamp(0.9em, 1.5vw 1,5vh, 2em);
 }
 
 .headerBtn:hover {
