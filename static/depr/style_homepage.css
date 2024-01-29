@@ -1,0 +1,191 @@
+:root {
+    --cBlue: #5386E4;
+    --cBlack: #32292F;
+    --cGreen: #517664;
+    --cAqua: #0FF4C6;
+    --cWhite: #F7EBE8;
+}
+
+@keyframes zoom {
+  from {
+      transform: scale(1);
+  }
+  to {
+      transform: scale(1.2);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .toolboxes {
+    width: 100%;
+  }
+
+}
+
+@font-face {
+    font-family: DMsans;
+    src: url('font/DMSANS/static/DMSans-Regular.ttf')
+}
+
+@font-face {
+    font-family: DMsans-italic;
+    src: url('font/DMSANS/static/DMSans-SemiBoldItalic.ttf')
+
+}
+
+@font-face {
+    font-family: DMsans-bold;
+    src: url('font/DMSANS/static/DMSans-Bold.ttf')
+}
+
+html {
+  background-image: linear-gradient(170deg,ivory, var(--cAqua)); 
+  background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    height: 100%;
+}
+
+#header {
+    font-family: DMsans-italic, sans-serif;
+    font-size: 50px;
+    opacity: 1;
+}
+
+#subHeader {
+    font-family: DMsans, sans-serif;
+    font-size: 20px;
+    opacity: 1;
+}
+
+/* .toolboxes {
+    background-color: rgba(245,245,245,0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    width: 500px;
+    height: fit-content;
+    color: var(--cBlack);
+} */
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.toolboxes {
+    background-color: rgba(245,245,245,0.5);
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    height: fit-content;
+    color: var(--cBlack);
+    margin: 50px;
+    margin-top: 10%;
+    padding: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.toolboxes:hover {
+  animation: zoom 0.5s forwards;
+}
+.mainBtn {
+    opacity: 1;
+    width: 150px;
+    height: 50px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 60px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-width: 0;
+    background-color: var(--cBlue);
+    font-size: 20px;
+    font-family: DMsans-bold, sans-serif;
+    color: var(--cWhite);
+}
+
+.mainBtn:hover {
+    opacity: 1;
+    background-color: #1b65ef;
+    cursor: pointer;
+    color: var(--cWhite);
+}
+
+.clsSidePanel {
+    height: 60%; 
+    width: 0; 
+    position: fixed; 
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #5386e4; 
+    overflow-x: hidden; 
+    padding-top: 60px;
+    padding-left: 0px;
+    border-radius: 0px;
+    border-width: 0; 
+    transition: 0.5s; 
+    color: black;
+  }
+  
+  /* The sidepanel links */
+  .clsSidePanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-family: DMsans, sans-serif;
+    font-size: 25px;
+    color: #f7ebe8;
+    display: block;
+    transition: 0.3s;
+    padding-bottom: 25px;
+  }
+
+  .sidePanelTop {
+    text-decoration: underline;
+  }
+
+  .sidePanelBottom {
+    position: absolute;
+    text-decoration: underline;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .clsSidePanel a:hover {
+    color: #32292f;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .clsSidePanel .closeBtn {
+    position: absolute;
+    top: 5px;
+    font-size: 36px;
+    margin-left: -10px;
+  }
+  
+  /* Style the button that is used to open the sidepanel */
+  .openBtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #5386E4;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 0;
+    border-width: 0;
+    border: none;
+  }
+  
+  .openBtn:hover {
+    background-color: #444;
+  }

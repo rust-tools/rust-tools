@@ -63,7 +63,7 @@ body {
     color: var(--cWhite);
     margin: 1vw 1vh;
     padding: 1vw 1vh;
-    font-size: clamp(0.9em, 1.5vw, 2em);
+    font-size: clamp(0.9em, 1.5vw 1,5vh, 2em);
 }
 
 .headerBtn:hover {
@@ -77,57 +77,3 @@ body {
     padding-bottom: 0.1vh;
 }
 
-/* BODY */
-
-.panels {
-    display: flex;
-    justify-content: start;
-    flex-wrap: wrap;
-    padding: 10px;
-}
-
-.toolPanel {
-    width: clamp(fit-content, 15vw, 80vw);
-    height: clamp(fit-content, 30vh, 80vh);
-    flex: 1;
-    padding: 5vh 5vw;
-    margin: 10px;
-    background-color: var(--cLGray);
-    border: 0px solid;
-    border-radius: 5px;
-    color: var(--cWhite);
-}
-
-#header {
-    font-family: DMsans-italic, sans-serif;
-    font-size: 200%;
-    margin-bottom: 3vh;
-}
-
-#subHeader {
-    font-family: DMsans, sans-serif;
-    font-size: 120%
-}
-
-.toolBtn {
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-    color: var(--cWhite);
-    background-color: var(--cDOrange);
-    font-family: DMsans-bold, sans-serif;
-    font-size: clamp(1.1em, 1.3vw, 4em);
-    padding: 3%;
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
-.toolBtn:hover {
-    background-color: var(--cLOrange);
-}
-
-#btnContainer {
-    display: flex;
-    justify-content: center;
-    padding-top: 15%;
-}

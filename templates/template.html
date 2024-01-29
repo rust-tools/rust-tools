@@ -1,39 +1,28 @@
 <!DOCTYPE html>
-<!-- Commenting an HTML file feels weird, is it conventionally done? -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.8">
-    <link href="{{ url_for('static', filename='template.css') }}" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
-    <meta name="robots" content="noindex">
-    <script>
-        // These variables are used in the index.js file, and are used to get the JSON files that contain the item names.
-        var deployableSuggestsUrl = "{{ url_for('static', filename='deployableSuggests.json') }}";
-        var vehicleSuggestsUrl = "{{ url_for('static', filename='vehicleSuggests.json') }}";
-        var buildingSuggestsUrl = "{{ url_for('static', filename='buildingSuggests.json') }}";
-    </script>
-    <script src="{{ url_for('static', filename='index.js') }}" defer></script> <!-- Main script for the page -->
-    <title>Rust Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="template.css">
+    <title>rustTools</title>
 </head>
-
 <body>
-    <div id="sidePanel" class="clsSidePanel">
-        <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&timesbar;</a>
-        <div class="sidePanelTop">
-            <a href="home">home</a>
-            <a href="raidtool">raidTool</a>
-            <a href="recycletool">recycleTool</a>
-            <a href="in-development">help</a>
-            <a href="in-development">about</a>
-            <a href="https://www.paypal.com/donate/?hosted_button_id=98H3AK3BD3D9L" target="_blank">donate</a>
+    <div class="container">
+        <div class="header">
+            <a href="home" id="headerImg">
+                <img src="/static/img/rustToolsLogo-removebg.png" id="headerImg">
+            </a>
+            <a href="home" class="headerBtn">home</a>
+            <a href="raidTool" class="headerBtn">raidTool</a>
+            <a href="recycleTool" class="headerBtn">recycleTool</a>
+            <a href="aboutPage" class="headerBtn">about</a>
+            <a href="donate" class="headerBtn">donate</a>
         </div>
-        <div class="sidePanelBottom">
+        <div class="main-body">
             
         </div>
     </div>
-      
-    <button class="openBtn" onclick="openNav()">&#9776;</button>
-    
 </body>
 </html>
+
+<!-- TODO: FIX HREF CSS & IMG FOR FLASK (ONLY AFTER FINISHING) -->
