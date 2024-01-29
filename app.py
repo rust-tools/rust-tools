@@ -1,15 +1,6 @@
 from flask import Flask, render_template, session, request
 import os
 import python_functions
-from app_settings import use_legacy, debug_mode
-
-# Declare proper settings
-if use_legacy:
-    print("[CONSOLE] Using legacy UI")
-    use_template = "index_legacy.html"
-elif use_legacy == False:
-    print("[CONSOLE] Using new UI")
-    use_template = "index.html"
 
 # Declares the app variable to start the webapp
 app = Flask(__name__)
@@ -68,7 +59,7 @@ def recycleTool():
 # Renders the index.html page
 @app.route('/')
 def index():
-    return render_template(use_template)
+    return render_template('index.html')
 
 # Renders the home.html page
 @app.route('/home')
@@ -89,5 +80,5 @@ def devPage():
 # Runs the app
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=debug_mode)
+    app.run(host='0.0.0.0', port=port, debug=False)
     
