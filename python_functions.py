@@ -255,9 +255,20 @@ def find_recycle_output(
                 probability = "{:.0%}".format(probability)
                 quantity = dictionary['quantity']
                 yield f"{quantity} {recycle_output} with a {probability} probability."
-            
+
+def find_recycle_output_new(recycle_input: dict,
+                            recycle_down_outputs: bool,
+                            recycle_multiple_items: bool = False, 
+                            recycle_file: str = r'data/rustlabsRecycleData.json'
+                            ):
+    
+
+    pass
+
+
 def add_to_list(item_name: str,
-                item_dumps: str):
+                amount: int):
+    output = {}
     # 2 files, dumps and outputfile
     # dumps is the list of items to be recycled
     # outputfile is the list of all outputs
@@ -267,6 +278,5 @@ def add_to_list(item_name: str,
 # File Locations
 items_file = r'data/items.json'
 durab_file = r'data/rustlabsDurabilityData.json'
-
 recycle_file = r'data/rustlabsRecycleData.json'
 
