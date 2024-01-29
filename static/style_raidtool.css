@@ -51,6 +51,7 @@ body {
     overflow-y: hidden;
     overflow-x: scroll;
     scrollbar-width: none;
+    z-index: 9999;
 }
 
 .header::-webkit-scrollbar {
@@ -63,17 +64,54 @@ body {
     color: var(--cWhite);
     margin: 1vw 1vh;
     padding: 1vw 1vh;
-    font-size: clamp(0.9em, 1.5vw 1,5vh, 2em);
+    font-size: clamp(0.9em, 1.3vw, 2em);
+    text-underline-offset: 0.7em; /* TODO: Add this to the other documents as well */
+    z-index: 999;
 }
 
 .headerBtn:hover {
     background-color: #3f3f3f;
     text-decoration: underline;
+    transition-duration: 0.1s;
 }
 
 #headerImg {
     height: 10vh;
     margin-right: 1vh 1vw;
     padding-bottom: 0.1vh;
+    z-index: 999;
 }
 
+/* BODY */
+
+.main-body {
+    display: grid; /* FIXME: GRID IS NOT MOBILE FRIENDLY, TOCH MAAR FLEXBOX?? */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    padding: 5%;
+}
+
+.iobox {
+    grid-area: 2 / 2 / 3 / 3;
+    background-color: yellow;
+}
+
+.settingsbox {
+    grid-area: 2 / 3 / 3 / 4;
+    background-color: green;
+}
+
+/* IO Box */
+
+#itemInput {
+    width: 80%;
+    height: 4vh;
+    margin-top: 1vh;
+}
