@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Simplify your Rust experience with rustTools, a collection of tools to help you with your Rust experience.">
+        <meta name="keywords" content="rust, rust tools, rusttools, rust raid tool, rust raidtool, rust recycle tool, rust recyclertool, 
+                                        rust raid calculator, rust raidcalculator, rust recycle calculator, rust recyclecalculator, 
+                                        rust raid, rust recycle, rust raiding, rust recycling, rust raiding tool, rust raidingtool, 
+                                        rust raiding calculator, rust raidingcalculator, rust recycling tool, rust recyclingtool, 
+                                        rust recycling calculator, rust recyclingcalculator, game tools, rust game, rust raid, raid,
+                                        raid rust, tools for rust, raid tool rust, raid rust tool, rust tool recycle, recycle tool rust,
+                                        raid calculator rust, rust raid cost calcualtor, rust recycler output calculator">
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+        <script>
+            // These variables are used in the index.js file, and are used to get the JSON files that contain the item names.
+            var deployableSuggestsUrl = "{{ url_for('static', filename='deployableSuggests.json') }}";
+            var vehicleSuggestsUrl = "{{ url_for('static', filename='vehicleSuggests.json') }}";
+            var buildingSuggestsUrl = "{{ url_for('static', filename='buildingSuggests.json') }}";
+        </script>
+        <script src="{{ url_for('static', filename='index.js') }}" defer></script> <!-- Main script for the page -->
+        <title>Rust Tools</title>
+    </head>
+<body>
+    <div id="sidePanel" class="clsSidePanel">
+        <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&timesbar;</a>
+        <div class="sidePanelTop">
+            <a href="home">home</a>
+            <a href="raidtool">raidTool</a>
+            <a href="recycletool">recycleTool</a>
+            <a href="in-development">help</a>
+            <a href="in-development">about</a>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=98H3AK3BD3D9L" target="_blank">donate</a>
+        </div>
+        <div class="sidePanelBottom">
+            
+        </div>
+    </div>
+      
+    <button class="openBtn" onclick="openNav()">&#9776;</button>
+    <div class="wrapper">
+        <div class="main">
+            <h1 align="center" id="header">&lt;rustTools></h1>
+            <p align="center" id="subHeader">Rust, simplified.</p>
+            <button align="center" class="mainBtn" onclick="location.href='home'">TRY IT</button>
+        </div>
+    </div>
+
+</body>
+</html>
