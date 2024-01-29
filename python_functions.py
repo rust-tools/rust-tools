@@ -261,19 +261,21 @@ def find_recycle_output_new(recycle_input: dict,
                             recycle_multiple_items: bool = False, 
                             recycle_file: str = r'data/rustlabsRecycleData.json'
                             ):
-    
-
-    pass
-
-
-def add_to_list(item_name: str,
-                amount: int):
-    output = {}
-    # 2 files, dumps and outputfile
-    # dumps is the list of items to be recycled
-    # outputfile is the list of all outputs
-    # outputs are to be added up, might need to change recycler func
-    pass
+    global items_file
+    with open(recycle_file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    for item, amount in recycle_input:
+        for Id,data_list in data.items():
+            x = find_id(items_file, Id, True)
+            if item.lower() == x.lower():
+                for dictionary in data_list:
+                    recycle_output = find_id(items_file, dictionary['id'], True)
+                    probability = dictionary['probability']
+                    probability = "{:.0%}".format(probability)
+                    quantity = dictionary['quantity']
+                    quantity *= amount
+                    yield f"{quantity} {recycle_output} with a {probability} probability."
+        pass
 
 # File Locations
 items_file = r'data/items.json'
