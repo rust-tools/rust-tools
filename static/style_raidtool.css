@@ -1,117 +1,241 @@
 :root {
-    --cBrown: #2B241C;
-    --cWhite: #FFFAEA;
-    --cEGray: #262626;
-    --cLGray: #353535;
-    --cDOrange: #bc6c25;
-    --cLOrange: #f49f0a;
+    --cBlue: #5386E4;
+    --cBlack: #32292F;
+    --cGreen: #517664;
+    --cAqua: #0FF4C6;
+    --cWhite: #F7EBE8;
 }
 
 @font-face {
     font-family: DMsans;
-    src: url('/static/font/DMSANS/static/DMSans-Regular.ttf')
+    src: url('font/DMSANS/static/DMSans-Regular.ttf')
 }
 
 @font-face {
     font-family: DMsans-italic;
-    src: url('/static/font/DMSANS/static/DMSans-SemiBoldItalic.ttf')
+    src: url('font/DMSANS/static/DMSans-SemiBoldItalic.ttf')
 
 }
 
 @font-face {
     font-family: DMsans-bold;
-    src: url('/static/font/DMSANS/static/DMSans-Bold.ttf')
+    src: url('font/DMSANS/static/DMSans-Bold.ttf')
 }
 
-* { 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.clsSidePanel {
+  height: 60%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #5386e4; 
+  overflow-x: hidden; 
+  padding-top: 60px;
+  padding-left: 0px; 
+  transition: 0.5s; 
+  color: black;
 }
-
-body {
-    min-height: 100vh;
-    width: 100vw;
-    background-color: var(--cEGray);
-}
-
-/* HEADER */
-
-.header {
-    height: 10vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: start;
-    align-items: center;
-    background-color: var(--cEGray);
-    border-bottom: solid 1px;
-    border-color: var(--cWhite);
-    overflow-y: hidden;
-    overflow-x: scroll;
-    scrollbar-width: none;
-    z-index: 9999;
-}
-
-.header::-webkit-scrollbar {
-    display: none;
-}
-
-.headerBtn {
+  
+  /* The sidepanel links */
+  .clsSidePanel a {
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-family: DMsans, sans-serif;
-    color: var(--cWhite);
-    margin: 1vw 1vh;
-    padding: 1vw 1vh;
-    font-size: clamp(0.9em, 1.3vw, 2em);
-    text-underline-offset: 0.7em; /* TODO: Add this to the other documents as well */
-    z-index: 999;
-}
+    font-size: 25px;
+    color: #f7ebe8;
+    display: block;
+    transition: 0.3s;
+    padding-bottom: 25px;
+  }
 
-.headerBtn:hover {
-    background-color: #3f3f3f;
+  .sidePanelTop {
     text-decoration: underline;
-    transition-duration: 0.1s;
+  }
+
+  .sidePanelBottom {
+    position: absolute;
+    text-decoration: underline;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .clsSidePanel a:hover {
+    color: #32292f;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .clsSidePanel .closeBtn {
+    position: absolute;
+    top: 5px;
+    font-size: 36px;
+    margin-left: -10px;
+  }
+  
+  /* Style the button that is used to open the sidepanel */
+  .openBtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #5386E4;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openBtn:hover {
+    background-color: #444;
+  }
+
+
+  html {
+    background-image: linear-gradient(170deg,ivory, var(--cAqua)); 
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 100%;
 }
 
-#headerImg {
-    height: 10vh;
-    margin-right: 1vh 1vw;
-    padding-bottom: 0.1vh;
-    z-index: 999;
+@font-face {
+    font-family: baseFont;
+    src: url("font/BebasNeue-Regular.ttf")
 }
 
-/* BODY */
-
-.main-body {
-    display: grid; /* FIXME: GRID IS NOT MOBILE FRIENDLY, TOCH MAAR FLEXBOX?? */
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+.main {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 100vh;
-    width: 100vw;
-    z-index: 1;
-    padding: 5%;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: fit-content;
+    font-family: DMsans-bold, sans-serif;
+    color: ivory;
 }
 
-.iobox {
-    grid-area: 2 / 2 / 3 / 3;
-    background-color: yellow;
+.submitBtn {
+    width: 23%;
+    height: 80px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--cBlue);
+    color: var(--cWhite);
+    font-size: 30px;
+    margin: 0%;
+    font-family: baseFont;
+    padding-top: 0%;
+    margin-left: 2%;
 }
 
-.settingsbox {
-    grid-area: 2 / 3 / 3 / 4;
-    background-color: green;
+.submitBtn:hover {
+    background-color: #1b65ef;
+    cursor: pointer;
 }
 
-/* IO Box */
+.dropDowns {
+    width: 48%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    padding: 15px;
+    font-size: 15px;
+    margin-bottom: 5%;
+}
 
-#itemInput {
-    width: 80%;
-    height: 4vh;
-    margin-top: 1vh;
+#itemType {
+  margin-right: 2%;
+}
+
+#inputbox {
+    width: 68%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    padding: 15px;
+    font-size: 20px;
+    margin: 0%;
+}
+
+#output {
+    background-color: rgba(255, 255, 255, 0.75);
+    color: var(--cBlack);
+    height: fit-content;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-stretch: 200%;
+    margin-top: 50px;
+}
+
+.toggle {
+  position: relative ;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  background-color: var(--cGreen);
+  border-radius: 30px;
+  border: 2px solid var(--cWhite);
+  margin: 2%
+}
+     
+.toggle:after {
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--cWhite);
+  top: 0;
+  left: 0;
+  transition:  all 0.5s;
+}
+     
+.checkbox:checked + .toggle::after {
+  left: 24px;
+}
+     
+.checkbox:checked + .toggle {
+  background-color: var(--cGreen);
+}
+     
+.checkbox {
+  display: none;
+}
+
+.container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#switch {
+  margin-left: auto;
+  margin-right: auto;
+  justify-items: center;
+  text-align: center;
+}
+
+#jut-left {
+  text-align: right;
+}
+
+#jut-right {
+  text-align: left;
+}
+
+#homeBtn {
+  background: none;
+  border: none;
+  color: var(--cWhite);
+  text-decoration: underline;
 }

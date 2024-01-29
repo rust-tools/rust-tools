@@ -31,10 +31,10 @@ def raidTool():
                                                 raid_type,
                                                 raid_tool)
         return render_template(
-            'raidTool.html',
+            'raidtool.html',
             result=result)
     return render_template(
-        'raidTool.html', 
+        'raidtool.html', 
         result="Waiting for input...")
 
 # Renders the recycletool.html page with the input_item variable. If the request method is POST, it will run the pythonFunctions.findRecycleOutput function and return the result to the recycletool.html page
@@ -46,12 +46,12 @@ def recycleTool():
         input_item = request.form.get('getItem')
         result = list(python_functions.find_recycle_output(input_item))
         return render_template(
-            'recycleTool.html', 
+            'recycletool.html', 
             range = range(len(result)), 
             result=result, 
             item = f'Trying to recycle: {input_item}')
     return render_template(
-        'recycleTool.html', 
+        'recycletool.html', 
         result="Waiting for input...", 
         range = range(0), 
         item = "Waiting for input...")
@@ -81,4 +81,3 @@ def devPage():
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False) #! KEEP ON FALSE IN PRODUCTION ENV
-
