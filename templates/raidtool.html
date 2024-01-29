@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="raidTool.css">
+    <link rel="stylesheet" href="/static/style_raidTool.css">
     <title>rustTools</title>
 </head>
 <body>
@@ -19,7 +19,28 @@
             <a href="donate" class="headerBtn">donate</a>
         </div>
         <div class="main-body">
-            
+            <div class="iobox">
+                <form align="center" method="POST">
+                    <input
+                        type="text"
+                        name="getIemID"
+                        placeholder="Enter deployable..."
+                        id="itemInput"
+                        list="autoSuggest"
+                        required>
+                    
+                    <!-- <datalist id="autoSuggest">
+                        {% for item in items %}
+                            <option value="{{ item }}">
+                        {% endfor %}
+                    </datalist> FIXME: only works when flask is running-->
+                        
+                    <button type="submit" id="submitBtn">Submit</button>
+                </form>
+            </div>
+            <div class="settingsbox">
+                <p>test</p>
+            </div>
         </div>
     </div>
 </body>
