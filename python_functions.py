@@ -1,5 +1,4 @@
 import json
-import time
 
 def find_id(
         file_path = r'data/items.json',
@@ -299,11 +298,7 @@ items_file = r'data/items.json'
 durab_file = r'data/rustlabsDurabilityData.json'
 recycle_file = r'data/rustlabsRecycleData.json'
 
-start = time.time()
 test = find_recycle_output_new({'Targeting Computer': 2,
                                 'Gears': 5}, True)
 for i in test:
     print(i)
-end = time.time()
-
-print(end-start)
