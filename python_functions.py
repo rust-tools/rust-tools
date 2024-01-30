@@ -298,7 +298,7 @@ def find_recycle_output_new(recycle_input: dict,
                             yield from find_recycle_output_new({recycle_output: quantity}, recycle_down_outputs)
 
 def fix_recycle_output(input_list: list, recycle_down_outputs: bool):
-    cache = []
+    cache = {}
     final_products = ['High Quality Metal',
                     'Metal Fragments',
                     'Scrap',
@@ -314,8 +314,8 @@ def fix_recycle_output(input_list: list, recycle_down_outputs: bool):
                 input_list.remove(tuple_)
     
     for tuple_ in input_list:
-        if tuple_[0] not in cache:
-            cache.append(tuple_)
+        if tuple_[0] not in cache.keys():
+            cache[tuple_[0]] = tuple_
     for tuple_ in input_list:
         if tuple_[0] in cache:
             if tuple_[2] == cache[cache.index(tuple_)][2]:
