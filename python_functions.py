@@ -307,16 +307,24 @@ def fix_recycle_output(input_list: list, recycle_down_outputs: bool):
                     'Sulfur',
                     'Charcoal',
                     'Animal Fat']
-    if not recycle_down_outputs:
-        for item in input_list:
-            if item not in final_products:
-                input_list.remove(item)
+    if recycle_down_outputs:
+        for tuple_ in input_list:
+            if tuple_[0] not in final_products:
+                # print(f'Removing {tuple_[0]}')
+                input_list.remove(tuple_)
     
     for tuple_ in input_list:
         if tuple_[0] not in cache:
             cache.append(tuple_)
-        elif tuple_[0] in cache:
-            pass
+    for tuple_ in input_list:
+        if tuple_[0] in cache:
+            if tuple_[2] == cache[cache.index(tuple_)][2]:
+                tuple_[1] += cache[cache.index(tuple_)][1]
+            elif tuple_[2] != cache[cache.index(tuple_)][2]:
+                print(f'Adding {tuple_[0]} with {tuple_[2]} probability')
+                cache.append(tuple_)
+    for item in cache:
+        yield f"Trying to recycle: {item[0]}<br>Amount recycled: {item[1]}<br>Probability: {item[2]}"
 
 # File Locations
 items_file = r'data/items.json'
@@ -325,6 +333,11 @@ recycle_file = r'data/rustlabsRecycleData.json'
 
 # start = time.time()
 test = list(find_recycle_output_new({'Targeting Computer': 1}, True))
-print(test)
+# for i in test:
+#     print(i)
+test2 = fix_recycle_output(test, True)
+for i in test2:
+    print(i)
+# print(test)
 # end = time.time()
 # print(end-start)
