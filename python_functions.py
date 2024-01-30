@@ -262,6 +262,9 @@ def find_recycle_output_new(recycle_input: dict,
                             ):
     # input dict should be in the format of {item_id (or name, TBD): amount to be recycled}
 
+#TODO: Add all items up at the end (so the output is not displaying the same item multiple times (except if the probability is not equal)
+#TODO: Remove items from print that are recycled down (if recycle_down_outputs is True)
+
     final_products = ['High Quality Metal',
                       'Metal Fragments',
                       'Scrap',
