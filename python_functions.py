@@ -1,4 +1,5 @@
 import json
+import time
 
 def find_id(
         file_path = r'data/items.json',
@@ -264,6 +265,7 @@ def find_recycle_output_new(recycle_input: dict,
 
 #TODO: Add all items up at the end (so the output is not displaying the same item multiple times (except if the probability is not equal)
 #TODO: Remove items from print that are recycled down (if recycle_down_outputs is True)
+# both might need to be done in app.py or in the html file
 
     final_products = ['High Quality Metal',
                       'Metal Fragments',
@@ -288,20 +290,41 @@ def find_recycle_output_new(recycle_input: dict,
                     probability = "{:.0%}".format(probability)
                     quantity = dictionary['quantity']
                     quantity *= amount
-                    yield f"{quantity} {recycle_output} with a {probability} probability."
+                    yield (recycle_output, quantity, probability) 
                     if recycle_down_outputs:
                         if recycle_output in final_products:
                             continue
                         else:
                             yield from find_recycle_output_new({recycle_output: quantity}, recycle_down_outputs)
 
+def fix_recycle_output(input_list: list, recycle_down_outputs: bool):
+    cache = []
+    final_products = ['High Quality Metal',
+                    'Metal Fragments',
+                    'Scrap',
+                    'Cloth',
+                    'Leather',
+                    'Sulfur',
+                    'Charcoal',
+                    'Animal Fat']
+    if not recycle_down_outputs:
+        for item in input_list:
+            if item not in final_products:
+                input_list.remove(item)
+    
+    for tuple_ in input_list:
+        if tuple_[0] not in cache:
+            cache.append(tuple_)
+        elif tuple_[0] in cache:
+            pass
 
 # File Locations
 items_file = r'data/items.json'
 durab_file = r'data/rustlabsDurabilityData.json'
 recycle_file = r'data/rustlabsRecycleData.json'
 
-test = find_recycle_output_new({'Targeting Computer': 2,
-                                'Gears': 5}, True)
-for i in test:
-    print(i)
+# start = time.time()
+test = list(find_recycle_output_new({'Targeting Computer': 1}, True))
+print(test)
+# end = time.time()
+# print(end-start)
