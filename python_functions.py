@@ -1,4 +1,5 @@
 import json
+import time
 
 def find_id(
         file_path = r'data/items.json',
@@ -258,14 +259,25 @@ def find_recycle_output(
 
 def find_recycle_output_new(recycle_input: dict,
                             recycle_down_outputs: bool,
-                            recycle_multiple_items: bool = False, 
                             recycle_file: str = r'data/rustlabsRecycleData.json'
                             ):
+    # input dict should be in the format of {item_id (or name, TBD): amount to be recycled}
+
+    final_products = ['High Quality Metal',
+                      'Metal Fragments',
+                      'Scrap',
+                      'Cloth',
+                      'Leather',
+                      'Sulfur',
+                      'Charcoal',
+                      'Animal Fat']
+
     global items_file
     with open(recycle_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    for item, amount in recycle_input:
-        for Id,data_list in data.items():
+
+    for item, amount in recycle_input.items():
+        for Id, data_list in data.items():
             x = find_id(items_file, Id, True)
             if item.lower() == x.lower():
                 for dictionary in data_list:
@@ -275,10 +287,23 @@ def find_recycle_output_new(recycle_input: dict,
                     quantity = dictionary['quantity']
                     quantity *= amount
                     yield f"{quantity} {recycle_output} with a {probability} probability."
-        pass
+                    if recycle_down_outputs:
+                        if recycle_output in final_products:
+                            continue
+                        else:
+                            yield from find_recycle_output_new({recycle_output: quantity}, recycle_down_outputs)
+
 
 # File Locations
 items_file = r'data/items.json'
 durab_file = r'data/rustlabsDurabilityData.json'
 recycle_file = r'data/rustlabsRecycleData.json'
 
+start = time.time()
+test = find_recycle_output_new({'Targeting Computer': 2,
+                                'Gears': 5}, True)
+for i in test:
+    print(i)
+end = time.time()
+
+print(end-start)
