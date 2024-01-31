@@ -310,21 +310,23 @@ def fix_recycle_output(input_list: list, recycle_down_outputs: bool):
     if recycle_down_outputs:
         for tuple_ in input_list:
             if tuple_[0] not in final_products:
-                # print(f'Removing {tuple_[0]}')
                 input_list.remove(tuple_)
     
     for tuple_ in input_list:
         if tuple_[0] not in cache.keys():
             cache[tuple_[0]] = tuple_
-    for tuple_ in input_list:
-        if tuple_[0] in cache:
-            if tuple_[2] == cache[cache.index(tuple_)][2]:
-                tuple_[1] += cache[cache.index(tuple_)][1]
-            elif tuple_[2] != cache[cache.index(tuple_)][2]:
-                print(f'Adding {tuple_[0]} with {tuple_[2]} probability')
-                cache.append(tuple_)
-    for item in cache:
-        yield f"Trying to recycle: {item[0]}<br>Amount recycled: {item[1]}<br>Probability: {item[2]}"
+        elif tuple_[0] in cache.keys():
+            if tuple_[2] == cache[tuple_[0]][2]:
+                cache[tuple_[0]][1] += tuple_[1]
+    # FIXME
+    # for tuple_ in input_list:
+    #     if tuple_[0] in cache:
+    #         if tuple_[2] == cache[cache.index(tuple_)][2]:
+    #             tuple_[1] += cache[cache.index(tuple_)][1]
+    #         elif tuple_[2] != cache[cache.index(tuple_)][2]:
+    #             cache.append(tuple_)
+    # for item in cache:
+    #     yield f"Trying to recycle: {item[0]}<br>Amount recycled: {item[1]}<br>Probability: {item[2]}"
 
 # File Locations
 items_file = r'data/items.json'
