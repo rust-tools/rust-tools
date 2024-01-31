@@ -261,12 +261,7 @@ def find_recycle_output_new(recycle_input: dict,
                             recycle_down_outputs: bool,
                             recycle_file: str = r'data/rustlabsRecycleData.json'
                             ):
-    # input dict should be in the format of {item_id (or name, TBD): amount to be recycled}
-
-#TODO: Add all items up at the end (so the output is not displaying the same item multiple times (except if the probability is not equal)
-#TODO: Remove items from print that are recycled down (if recycle_down_outputs is True)
-# both might need to be done in app.py or in the html file
-
+    # List with all items that can not be recycled down any further
     final_products = ['High Quality Metal',
                       'Metal Fragments',
                       'Scrap',
@@ -280,10 +275,10 @@ def find_recycle_output_new(recycle_input: dict,
     with open(recycle_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    for item, amount in recycle_input.items():
-        for Id, data_list in data.items():
+    for item, amount in recycle_input.items(): 
+        for Id, data_list in data.items(): 
             x = find_id(items_file, Id, True)
-            if item.lower() == x.lower():
+            if item.lower() == x.lower(): 
                 for dictionary in data_list:
                     recycle_output = find_id(items_file, dictionary['id'], True)
                     probability = dictionary['probability']
@@ -307,26 +302,22 @@ def fix_recycle_output(input_list: list, recycle_down_outputs: bool):
                     'Sulfur',
                     'Charcoal',
                     'Animal Fat']
-    if recycle_down_outputs:
-        for tuple_ in input_list:
-            if tuple_[0] not in final_products:
-                input_list.remove(tuple_)
+    if recycle_down_outputs: 
+        for tuple_ in input_list: 
+            if tuple_[0] not in final_products: 
+                input_list.remove(tuple_) 
+
     
-    for tuple_ in input_list:
-        if tuple_[0] not in cache.keys():
-            cache[tuple_[0]] = tuple_
-        elif tuple_[0] in cache.keys():
-            if tuple_[2] == cache[tuple_[0]][2]:
-                cache[tuple_[0]][1] += tuple_[1]
-    # FIXME
-    # for tuple_ in input_list:
-    #     if tuple_[0] in cache:
-    #         if tuple_[2] == cache[cache.index(tuple_)][2]:
-    #             tuple_[1] += cache[cache.index(tuple_)][1]
-    #         elif tuple_[2] != cache[cache.index(tuple_)][2]:
-    #             cache.append(tuple_)
-    # for item in cache:
-    #     yield f"Trying to recycle: {item[0]}<br>Amount recycled: {item[1]}<br>Probability: {item[2]}"
+    for tuple_ in input_list: 
+        if (tuple_[0], tuple_[2]) not in cache.keys(): 
+            cache[(tuple_[0], tuple_[2])] = list(tuple_) 
+        elif ((tuple_[0], tuple_[2])) in cache.keys(): 
+            if tuple_[2] == cache[(tuple_[0], tuple_[2])][2]: 
+                cache[(tuple_[0], tuple_[2])][1] += tuple_[1] 
+            elif tuple_[2] != cache[(tuple_[0], tuple_[2])][2]: 
+                cache[(tuple_[0], tuple_[2])] = tuple_ 
+    for value in cache.values(): 
+        yield f"{value[1]} {value[0]} with a {value[2]} probability."
 
 # File Locations
 items_file = r'data/items.json'
@@ -334,12 +325,13 @@ durab_file = r'data/rustlabsDurabilityData.json'
 recycle_file = r'data/rustlabsRecycleData.json'
 
 # start = time.time()
-test = list(find_recycle_output_new({'Targeting Computer': 1}, True))
-# for i in test:
+# test = list(find_recycle_output_new({'Targeting Computer': 2,
+#                                      'Gears': 3}, True))
+# # for i in test:
+# #     print(i)
+# test2 = fix_recycle_output(test, True)
+# for i in test2:
 #     print(i)
-test2 = fix_recycle_output(test, True)
-for i in test2:
-    print(i)
-# print(test)
+# # print(test)
 # end = time.time()
 # print(end-start)
