@@ -1,6 +1,6 @@
 from flask import Flask, render_template, session, request
 import os
-import python_functions
+import python_functions as pf
 from app_settings import use_legacy, debug_mode
 
 # Declare proper settings
@@ -35,7 +35,7 @@ def raidTool():
         if raid_tool == 'None':
             raid_tool = None
         print(f"[CONSOLE] Itemtype: {item_type}, input: {input_data}, raidtype: {raid_type}")
-        result = python_functions.find_durability(item_type, 
+        result = pf.find_durability(item_type, 
                                                 input_data, 
                                                 raid_type,
                                                 raid_tool)
@@ -52,11 +52,14 @@ def raidTool():
         methods=['GET', 'POST'])
 def recycleTool():
     if request.method == 'POST':
+        # dont think this will work, look more into the creation of dictionary
         input_item = request.form.get('getItem')
         input_quantity = request.form.get('getQuantity')
         input_dictionary = {}
         input_dictionary[input_item] = input_quantity
-        result = list(python_functions.find_recycle_output(input_item))
+        recycle_down_outputs = request.form.get('getRecycleDown')
+        result = list(pf.fix_recycle_output(pf.find_recycle_output_new(input_dictionary, recycle_down_outputs)))
+        # result = list(python_functions.find_recycle_output(input_item))
         return render_template(
             'recycletool.html', 
             range = range(len(result)), 
