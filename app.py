@@ -53,6 +53,9 @@ def raidTool():
 def recycleTool():
     if request.method == 'POST':
         input_item = request.form.get('getItem')
+        input_quantity = request.form.get('getQuantity')
+        input_dictionary = {}
+        input_dictionary[input_item] = input_quantity
         result = list(python_functions.find_recycle_output(input_item))
         return render_template(
             'recycletool.html', 
