@@ -1,7 +1,7 @@
 import sys
 import os
 
-path = 'webapp/app.py'
+path = '/app.py'
 if path not in sys.path:
    sys.path.insert(0, path)
 
