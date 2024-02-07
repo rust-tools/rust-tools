@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/style_raidTool.css">
+    <script src="/static/index.js" defer></script>
     <title>rustTools</title>
 </head>
 <body>
@@ -19,31 +20,67 @@
             <a href="donate" class="headerBtn">donate</a>
         </div>
         <div class="main-body">
-            <div class="iobox">
-                <form align="center" method="POST">
-                    <input
-                        type="text"
-                        name="getIemID"
-                        placeholder="Enter deployable..."
-                        id="itemInput"
+            <h1 align="center" id="bodyHeader">raidTool</h1>
+            <form align="center" method="POST">
+                <div class="permTools">
+                    <!-- The big input box, contains the item that gets sent to the calculator -->
+                    <a class="settingsBtn" onclick="switchSettings()">
+                        <img src="/static/img/settings.png" class="settingsImg">
+                    </a> <!-- FIXME: CURRENTLY NOT CLICKABLE-->
+                    <input 
+                        type="text" 
+                        name="getId" 
+                        placeholder="Enter item..." 
+                        id="getIdBox" 
                         list="autoSuggest"
                         required>
-                    
-                    <!-- <datalist id="autoSuggest">
+
+                    <!-- <datalist id="autoSuggest" maxlength="3">
                         {% for item in items %}
-                            <option value="{{ item }}">
+                        <option value="{{ item }}">
                         {% endfor %}
-                    </datalist> FIXME: only works when flask is running-->
-                        
-                    <button type="submit" id="submitBtn">Submit</button>
-                </form>
-            </div>
-            <div class="settingsbox">
-                <p>test</p>
-            </div>
+                    </datalist> -->
+
+                    <!-- Button that submits the input to the pythonFunctions.py file -->
+                    <button type="submit" id="idSubmit" class="submitBtn" value="Submit">BOOM!</button>
+                </div>
+
+                <div class="hiddenTools"> <!-- TODO: MAKE AS EXPANDABLE MENU -->
+                    <select name="itemType" id="itemType" class="dropDowns">
+                        <!-- Itemtype dropdown menu -->
+                        <option value="deployable">Deployable</option>
+                        <option value="vehicle">Vehicle</option>
+                        <option value="building">Building</option>
+                    </select>
+
+                    <select name="raidTool" id="raidTool" class="dropDowns" disabled>
+                        <option value="None">Best Option (Default)</option>
+                        <option value="satchel charge">Satchel Charge</option>
+                        <option value="beancan grenade">Beancan Grenade</option>
+                        <option value="rocket">Rocket</option>
+                        <option value="timed explosive charge">Timed Explosive Charge</option>
+                        <option value="explosive 5.56 rifle ammo">Explosive 5.56 Rifle Ammo</option>
+                        <option value="high velocity rocket">High Velocity Rocket</option>
+                        <option value="f1 grenade">F1 Grenade</option>
+                    </select>
+
+                    <div class="container" align="center"> <!-- TODO: CLEAN UP -->
+                        <p id="jut-left">Explo</p>
+                        <div id="switchDiv">
+                        <input type="checkbox" id="switch" class="checkbox" name="switch" />
+                        <label for="switch" class="toggle">
+                            <p></p>
+                        </label>
+                        </div>
+                        <p id="jut-right">Eco</p> <!-- TODO: TURN THIS INTO THE RIGHT SLIDER BUTTON -->
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </body>
 </html>
 
 <!-- TODO: FIX HREF CSS & IMG FOR FLASK (ONLY AFTER FINISHING) -->
+
+<!-- TODO: MAKE MOBILE WEBSITE IN PROGRESS -->
