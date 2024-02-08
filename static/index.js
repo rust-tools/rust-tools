@@ -10,8 +10,18 @@ function closeNav() {
     document.getElementById("sidePanel").style.height = "0";
   }
 
+
+
 function switchSettings() {
+    var settingsOpened = localStorage.getItem('settingsOpened');
+    if (settingsOpened === 'true') {
+        localStorage.setItem('settingsOpened', 'false');
+        document.getElementById('hiddenTools').style.display = 'none';
+    } else {
+        localStorage.setItem('settingsOpened', 'true');
+        document.getElementById('hiddenTools').style.display = '';
     
+    } 
 }  
 
 
@@ -62,6 +72,9 @@ window.onload = function() {
         }
     
     }
+
+    localStorage.getItem('settingsOpened') === 'true' ? document.getElementById('hiddenTools').style.display = '' : document.getElementById('hiddenTools').style.display = 'none';
+
 }
 
 // JavaScript code to give auto suggest functionality to the input box, based on user input.    
