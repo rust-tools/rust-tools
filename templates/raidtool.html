@@ -24,9 +24,9 @@
             <form align="center" method="POST">
                 <div class="permTools">
                     <!-- The big input box, contains the item that gets sent to the calculator -->
-                    <a class="settingsBtn" onclick="switchSettings()">
+                    <a class="settingsBtn" href="#" onclick="switchSettings()">
                         <img src="/static/img/settings.png" class="settingsImg">
-                    </a> <!-- FIXME: CURRENTLY NOT CLICKABLE-->
+                    </a> 
                     <input 
                         type="text" 
                         name="getId" 
@@ -45,7 +45,7 @@
                     <button type="submit" id="idSubmit" class="submitBtn" value="Submit">BOOM!</button>
                 </div>
 
-                <div class="hiddenTools"> <!-- TODO: MAKE AS EXPANDABLE MENU -->
+                <div class="hiddenTools" id="hiddenTools"> 
                     <select name="itemType" id="itemType" class="dropDowns">
                         <!-- Itemtype dropdown menu -->
                         <option value="deployable">Deployable</option>
@@ -74,6 +74,7 @@
                         </div>
                         <p id="jut-right">Eco</p> <!-- TODO: TURN THIS INTO THE RIGHT SLIDER BUTTON -->
                     </div>
+                <!-- TODO: ADD DYNAMIC OUTPUT BOX -->
                 </div>
             </form>
         </div>
