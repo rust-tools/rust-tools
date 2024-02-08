@@ -20,9 +20,8 @@ function switchSettings() {
     } else {
         localStorage.setItem('settingsOpened', 'true');
         document.getElementById('hiddenTools').style.display = '';
-    
     } 
-}  
+} // TODO: MAKE IT SO THAT IT SAVES THE STATE OF SETTINGS PANEL ON PAGE REFRESH BUT NOT ON PAGE CLOSE 
 
 
 // JavaScript code to save the selected options in the dropdown menus, so that they are still selected when the page is refreshed.
