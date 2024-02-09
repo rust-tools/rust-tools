@@ -14,27 +14,32 @@
                 <img src="/static/img/rustToolsLogo-removebg.png" id="headerImg">
             </a>
             <a href="home" class="headerBtn">home</a>
-            <a href="raidTool" class="headerBtn">raidTool</a>
+            <a href="raidTool" class="headerBtn" style="text-decoration: underline">raidTool</a>
             <a href="recycleTool" class="headerBtn">recycleTool</a>
             <a href="aboutPage" class="headerBtn">about</a>
             <a href="donate" class="headerBtn">donate</a>
         </div>
         <div class="main-body">
-            <h1 align="center" id="bodyHeader">raidTool</h1>
+            <div id="mobileWarning" align="center">
+                <p>WARNING: This website is not yet optimized for your current resolution.</p>
+                <p>For the best experience, please use a desktop or tablet.</p>
+            </div>
+            <h1 align="center" id="bodyHeader">&lt;raidTool/></h1>
             <form align="center" method="POST">
                 <div class="permTools">
                     <!-- The big input box, contains the item that gets sent to the calculator -->
                     <a class="settingsBtn" href="#" onclick="switchSettings()">
                         <img src="/static/img/settings.png" class="settingsImg">
                     </a> 
-                    <input 
-                        type="text" 
-                        name="getId" 
-                        placeholder="Enter item..." 
-                        id="getIdBox" 
-                        list="autoSuggest"
-                        required>
-
+                    <!-- <div class="getIdBoxContainer"> -->
+                        <input 
+                            type="text" 
+                            name="getId" 
+                            placeholder="Enter item..." 
+                            id="getIdBox" 
+                            list="autoSuggest"
+                            required>
+                    <!-- </div> -->
                     <!-- <datalist id="autoSuggest" maxlength="3">
                         {% for item in items %}
                         <option value="{{ item }}">
@@ -46,18 +51,14 @@
                 </div>
 
                 <div class="hiddenTools" id="hiddenTools"> 
-                    
-                    <div class="container" align="center"> <!-- TODO: CLEAN UP -->
-                        <p id="jut-left">Explo</p>
-                        <div id="switchDiv">
-                        <input type="checkbox" id="switch" class="checkbox" name="switch" />
-                        <label for="switch" class="toggle">
-                            <p></p>
-                        </label>
-                        </div>
-                        <p id="jut-right">Eco</p> <!-- TODO: TURN THIS INTO THE RIGHT SLIDER BUTTON -->
+                    <div class="segmentedToggle"> 
+                        <input type="radio" id="raidTypeExplo" name="raidType" class="raidType"/>
+                        <label for="raidTypeExplo" class="toggle" id="toggleExplo">EXPLO</label>
+
+                        <input type="radio" id="raidTypeEco" name="raidType" class="raidType"/>
+                        <label for="raidTypeEco" class="toggle" id="toggleEco">ECO</label>
                     </div>
-                   <br> 
+                    <br> 
                     <select name="itemType" id="itemType" class="dropDowns">
                         <!-- Itemtype dropdown menu -->
                         <option value="deployable">Deployable</option>
