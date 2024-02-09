@@ -23,6 +23,13 @@ function switchSettings() {
     } 
 } // TODO: MAKE IT SO THAT IT SAVES THE STATE OF SETTINGS PANEL ON PAGE REFRESH BUT NOT ON PAGE CLOSE 
 
+ if (window.innerWidth < 768) {
+        document.getElementById('mobileWarning').style.display = '';
+        console.log('window width:', window.innerWidth);
+    } else {
+        document.getElementById('mobileWarning').style.display = 'none';
+        console.log('window width:', window.innerWidth);
+    }
 
 // JavaScript code to save the selected options in the dropdown menus, so that they are still selected when the page is refreshed.
 window.onload = function() {
@@ -37,7 +44,7 @@ window.onload = function() {
         document.getElementById('idSubmit').innerHTML = 'CHOP!';
         raidTool.disabled = this.checked;
         raidTool.value = 'None';
-    }
+    } //TODO: ADAPT THIS TO NEW UI
 
     // If there are, set the selected options
     if (raidType) {
@@ -54,8 +61,7 @@ window.onload = function() {
     document.getElementById('itemType').onchange = function() {
         localStorage.setItem('itemType', this.value);
     }
-
-
+   
     document.getElementById('switch').onchange = function() {
         var submitButton = document.getElementById('idSubmit');
         var submitBtn = document.querySelector('.submitBtn');
@@ -110,5 +116,5 @@ function updateSuggestions() {
         .catch(error => console.error('Error:', error));
 };
 // Calls the updateSuggestions function when the user either types in the box or changes the item type.
-document.getElementById('inputbox').addEventListener('keyup', updateSuggestions);
+document.getElementById('getIdBox').addEventListener('keyup', updateSuggestions);
 document.getElementById('itemType').addEventListener('change', updateSuggestions);
